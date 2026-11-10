@@ -10,6 +10,13 @@ for a newer version, using g3-native-plugins' `updater`:
   TestFlight, the Microsoft Store) learn a new version is out and open the
   store, which installs it.
 
+**The g3 store apps do not use this for their store builds.** Their store
+updates come from g3-brand's catalog, which adds what a store app needs
+beyond a link: optional prompts with snooze, required updates, and policy per
+platform and channel. Use `store.json` only for an app without g3-brand, or
+a store build of an app that otherwise publishes here. Today this repository
+serves Tawny (Android APK, Windows) and Snow Cut (Windows).
+
 The app's source can live anywhere, private repositories included: only the
 release files are published here.
 
