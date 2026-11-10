@@ -1,0 +1,82 @@
+name: Announce a store release
+
+# Run by hand once a store has a version live: Google Play, the App Store,
+# TestFlight, the Microsoft Store. It adds the store page to
+# apps/<app>/store.json, which the app's store builds check; they then offer
+# the update and open the store. Store builds have their own file because a
+# store goes live on its own schedule: a sideloaded release in latest.json
+# must not send a Play user to a version Play does not have yet.
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: The app's name in this repository
+        required: true
+        type: string
+      version:
+        description: The version now live in the store
+        required: true
+        type: string
+      stores:
+        description: Store pages, space-separated `platform-store=url` (android-store=https://play.google.com/store/apps/details?id=...)
+        required: true
+        type: string
+      channel:
+        description: Which release file to write
+        required: false
+        type: string
+        default: store
+
+permissions:
+  contents: write
+
+concurrency:
+  group: announce
+  cancel-in-progress: false
+
+jobs:
+  announce:
+    name: Announce ${{ inputs.app }} ${{ inputs.version }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      APP: ${{ inputs.app }}
+      VERSION: ${{ inputs.version }}
+      STORES: ${{ inputs.stores }}
+      CHANNEL: ${{ inputs.channel }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Write the store file
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$APP" =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "app must be lowercase letters, digits and hyphens" >&2; exit 1; }
+          [[ "$CHANNEL" =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "channel must be lowercase letters, digits and hyphens" >&2; exit 1; }
+          args=(--version "$VERSION" --out "apps/$APP/$CHANNEL.json" --merge)
+          read -r -a pages <<< "$STORES"
+          for page in "${pages[@]}"; do
+            args+=(--store "$page")
+          done
+          node scripts/release-manifest.mjs "${args[@]}"
+
+      - name: Push the store file
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "apps/$APP/$CHANNEL.json"
+          git diff --cached --quiet && exit 0
+          git commit -m "release($APP): $VERSION on $CHANNEL"
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase --quiet origin main && git push --quiet origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 5))
+          done
+          echo "Could not push the store file after five attempts" >&2
+          exit 1

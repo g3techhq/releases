@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Scripts and release files
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Test the scripts
+        run: node --test tests/release.test.mjs
+
+      # A release file that does not parse is an update check that fails on
+      # every install of that app.
+      - name: Parse every release file
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          for file in apps/*/*.json; do
+            node -e 'const r = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8")); if (!r.version || !r.platforms) throw new Error(process.argv[1] + " has no version or platforms")' "$file"
+            echo "ok $file"
+          done
