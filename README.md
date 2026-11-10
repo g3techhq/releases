@@ -83,7 +83,8 @@ Play does not have yet.
        files: |
          android=App_1.2.0.apk
          windows-x86_64-nsis=App_1.2.0_x64-setup.zip
-       key_file: src/updater.rs   # checked against UPDATER_KEY
+       attach: App_1.2.0_x64-setup.exe   # on the release page only, for a first install
+       key_file: src/updater.rs           # checked against UPDATER_KEY
      secrets:
        updater_key: ${{ secrets.UPDATER_KEY }}
        releases_token: ${{ secrets.RELEASES_TOKEN }}

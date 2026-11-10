@@ -13,6 +13,7 @@ name: Publish
 #       files: |
 #         android=Tawny_0.2.0.apk
 #         windows-x86_64-nsis=Tawny_0.2.0_x64-setup.zip
+#       attach: Tawny_0.2.0_x64-setup.exe
 #       key_file: src/updater.rs
 #     secrets:
 #       updater_key: ${{ secrets.UPDATER_KEY }}
@@ -40,6 +41,11 @@ on:
         default: ""
       files:
         description: Files to sign and attach, one `platform=file name` per line
+        required: false
+        type: string
+        default: ""
+      attach:
+        description: Other files for the release page (a first-time installer), one name per line; not in the release file, not signed
         required: false
         type: string
         default: ""
@@ -84,6 +90,7 @@ jobs:
       VERSION: ${{ inputs.version }}
       CHANNEL: ${{ inputs.channel }}
       FILES: ${{ inputs.files }}
+      ATTACH: ${{ inputs.attach }}
       STORES: ${{ inputs.stores }}
       NOTES: ${{ inputs.notes }}
       KEY_FILE: ${{ inputs.key_file }}
@@ -176,6 +183,11 @@ jobs:
             [[ -z "${line//[[:space:]]/}" ]] && continue
             files+=("dist/${line#*=}")
           done <<< "$FILES"
+          while IFS= read -r file; do
+            [[ -z "${file//[[:space:]]/}" ]] && continue
+            [[ "$file" =~ ^[A-Za-z0-9._-]+$ && -f "dist/$file" ]] || { echo "No file dist/$file to attach" >&2; exit 1; }
+            files+=("dist/$file")
+          done <<< "$ATTACH"
           notes="${NOTES:-$APP $VERSION}"
           gh release create "$tag" --repo "$RELEASES" --target main --draft --latest=false \
             --title "$APP $VERSION" --notes "$notes" "${files[@]}"
