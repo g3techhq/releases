@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play. Later dev builds install themselves from here.\n\nBackend: none. The app reads only the public catalog (https://catalog.g3tech.net); detection runs on the phone.\n\nAlso attached: `ad-sentinel-googletv-0.1.1.apk`, the Google TV overlay app (sideload it; it does not update itself).\n\nCommits since the last dev build (7af8ecf):\n- e20f90c feat(app): in-app updater for sideloaded dev builds\n- 627300c chore(release): ad-sentinel 0.1.1",
+  "pub_date": "2026-11-11T20:51:34Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.1/ad-sentinel-0.1.1.apk",
+      "signature": "untrusted comment: signature from the Tawny release key\nRUQWUD5l1lI+zb0NQ9jlKqFRnS2skOa+w2rWcno5uuj7E61lGuGnIBDKGaAZiVUbJilIx/uka8qnPgo4uMC6AdqENLIRYpJ8Zg4=\ntrusted comment: timestamp:1794430294\tfile:ad-sentinel-0.1.1.apk\thashed\nTk4v1Wpan/y9RItvH4Mx7UUutmCJAbsKOjeeYqW0Z0X1rcvAnRBslMznYqVDTPBQILJlHhkbxvm7sMKa8aWGDg==\n"
+    }
+  }
+}
