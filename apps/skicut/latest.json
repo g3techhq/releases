@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "notes": "A debug-signed dev build of Snow Cut for Android, for sideloading. It is the first build with the in-app updater: About, on Your cuts, checks this repository for newer releases, downloads the APK, checks its signature and hands it to Android to install. Later dev builds install over this one.\n\nThere is no backend; everything runs on the phone. Built from the local skicut repository (it has no GitHub remote).\n\nRecent changes:\n- The sideloaded Android build updates itself (About sheet and a check at launch).\n- Full screen on the phone turns to landscape.\n- A beat at the very end of a song no longer crashes its analysis.\n- The phone's picker shows the clips, its bar covers the list, and job panics say why.\n- The music's waveform on the shot bar; editor drags ignore taps and stray touches.",
+  "pub_date": "2026-11-11T21:06:40Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.1/SnowCut_0.1.1_arm64.apk",
+      "signature": "untrusted comment: signature from the Tawny release key\nRUTURFpf4z8Aj8ScSipLrJQZ0RX3dOYxhhSD9q1xQ7NMqyMqODZucXKHNKrsUIcOsUDNGT431xoMhqjOZ7ub9JT/nTpyDAAZ9Q0=\ntrusted comment: timestamp:1794431200\tfile:SnowCut_0.1.1_arm64.apk\thashed\njHUlB3NoZhzgmqH4PIFpuJg83Nuc5mLt67MXDbVLMZVjIVwGM3EuEcHAaC+rIOLZf/Zb+NLZonc5eb39vR+MAA==\n"
+    }
+  }
+}
