@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: https://staging.greensidepartee.com (SERVER_URL and APP_LINK_ORIGIN).\n\nSince the 2026-11-11 dev build (21afea0):\n- feat(updater): sideloaded Android builds check for, download and install their own updates\n- chore(release): greenside-partee 0.1.1",
+  "pub_date": "2026-11-11T21:14:32Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.1/greenside-partee-0.1.1.apk",
+      "signature": "untrusted comment: signature from the Tawny release key\nRUROTcbBmkb4Dp1L0WkrzQHGC/23BlSlIWBwXJGTps82/raxRjU0uMamwJdw6uJ+q6OYBz+EkqnES10yiFv67VpI1AbmULQ17Qw=\ntrusted comment: timestamp:1794431672\tfile:greenside-partee-0.1.1.apk\thashed\nTEw66u7bQ/s5Iw4jMECWgzvI5qxSMZ7p6qak5QdhUYIA5jaZAJa9HYkW+aeGI3I6ZFFzVuhVVqr5X7U9k8jPBQ==\n"
+    }
+  }
+}
