@@ -20,7 +20,7 @@ jobs:
           persist-credentials: false
 
       - name: Test the scripts
-        run: node --test tests/release.test.mjs
+        run: node --test tests/*.mjs
 
       # A release file that does not parse is an update check that fails on
       # every install of that app.

@@ -105,6 +105,43 @@ Play does not have yet.
 Tawny (`Gateway3B/tawny`, `.github/workflows/release.yml`) is a complete
 example.
 
+## Publishing from a workstation
+
+`scripts/publish-local.mjs` does what `publish.yml` does, from a machine
+with the app's secret key, `gh` logged in with push access here, and a
+clean checkout of this repository on `main`:
+
+```bash
+node scripts/publish-local.mjs --app <app> --version <x.y.z> --key ~/.g3-release/<app>-updater.key   --file <platform>=<path> [--file ...] [--attach <path> ...] [--notes <text or @file>]   [--source <repo@sha>] [--public-key <file|text>] [--name <App name>] [--prerelease] [--dry-run]
+```
+
+For example:
+
+```bash
+node scripts/publish-local.mjs --app ad-sentinel --version 1.2.0   --key ~/.g3-release/ad-sentinel-updater.key   --public-key ../ad-sentinel/src/updater.rs   --file android=dist/AdSentinel_1.2.0.apk   --file windows-x86_64-nsis=dist/AdSentinel_1.2.0_x64-setup.zip   --attach dist/AdSentinel_1.2.0_x64-setup.exe   --notes @notes.md --source Gateway3B/ad-sentinel@0123abc
+```
+
+It refuses a tag or release `<app>-v<version>` that already exists, a
+version not newer than the current `latest.json`, and a key that is not
+the one in `--public-key` (a `.pub` file, a source file holding the key,
+or the key itself). Then it signs each `--file` (signatures go to a
+temporary folder, not beside the files), creates the release as a draft
+titled `<App> <version>` on `main`, uploads the files, their `.minisig`
+signatures and the `--attach` extras, publishes it (never marked latest),
+and only then writes `apps/<app>/latest.json`, commits
+`release(<app>): <version> on latest` and pushes to `main`, pulling with
+rebase and retrying if another release got there first.
+
+`--notes` goes on the release page and into `latest.json`; `--source`
+adds "Built from <repo@sha>" to the release page only. `--prerelease`
+marks the GitHub release as a pre-release, but `latest.json` still points
+installs at it. `--dry-run` checks everything, signs into a temporary
+folder and prints the commands and `latest.json` it would write, creating
+nothing.
+
+If the release is created but a later step fails, the script says so and
+leaves `latest.json` alone: no install is sent anywhere until it is pushed.
+
 ## Announcing a store release
 
 Once a store has the version live, run **Announce a store release** from the
@@ -138,7 +175,7 @@ NSIS update archive.
 ## Development
 
 ```bash
-node --test tests/release.test.mjs
+node --test tests/*.mjs
 ```
 
 The scripts are Node ES modules on the standard library only. Keys and

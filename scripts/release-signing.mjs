@@ -154,8 +154,12 @@ async function main(argv) {
     if (existsSync(secretPath)) throw new Error(`${secretPath} exists; refusing to replace a key`);
     const key = generateKey();
     writeFileSync(publicPath, publicKeyText(key));
-    writeFileSync(secretPath, `${secretText(key)}
-`, { mode: 0o600 });
+    writeFileSync(
+      secretPath,
+      `${secretText(key)}
+`,
+      { mode: 0o600 },
+    );
     console.log(`Public key: ${publicPath} (goes in the app)`);
     console.log(`Secret key: ${secretPath} (goes in the app repository's UPDATER_KEY secret)`);
     return;

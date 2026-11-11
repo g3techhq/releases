@@ -77,7 +77,11 @@ export function buildManifest({
   }
   return {
     version,
-    ...(notes ? { notes } : existing?.version === version && existing.notes ? { notes: existing.notes } : {}),
+    ...(notes
+      ? { notes }
+      : existing?.version === version && existing.notes
+        ? { notes: existing.notes }
+        : {}),
     pub_date: pubDate,
     platforms,
   };

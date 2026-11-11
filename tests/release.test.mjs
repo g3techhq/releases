@@ -65,7 +65,11 @@ test("downloads are listed under the release's URL, store pages as they are", ()
     baseUrl: `${BASE}/`,
     downloads: [
       { platform: "android", fileName: "Tawny_0.2.0.apk", signature: SIGNATURE },
-      { platform: "windows-x86_64-nsis", fileName: "Tawny_0.2.0_x64-setup.zip", signature: SIGNATURE },
+      {
+        platform: "windows-x86_64-nsis",
+        fileName: "Tawny_0.2.0_x64-setup.zip",
+        signature: SIGNATURE,
+      },
     ],
     stores: [{ platform: "ios-store", url: "https://testflight.apple.com/join/abc" }],
   });
@@ -109,7 +113,12 @@ test("entries the updater would refuse are refused here first", () => {
   const base = { version: "0.2.0", pubDate: "x", baseUrl: BASE };
   assert.throws(() => buildManifest(base), /at least one/);
   assert.throws(
-    () => buildManifest({ ...base, version: "next", stores: [{ platform: "ios-store", url: "https://apps.apple.com/" }] }),
+    () =>
+      buildManifest({
+        ...base,
+        version: "next",
+        stores: [{ platform: "ios-store", url: "https://apps.apple.com/" }],
+      }),
     /semantic/,
   );
   const unsigned = [{ platform: "android", fileName: "a.apk", signature: "" }];
