@@ -103,7 +103,7 @@ export function signatureText(key, digest, fileName, timestamp = Math.floor(Date
   const global = sign(null, Buffer.concat([signature, Buffer.from(trusted)]), privateKey);
   const line = Buffer.concat([Buffer.from("ED"), key.keyId, signature]).toString("base64");
   return [
-    "untrusted comment: signature from the Tawny release key",
+    `untrusted comment: signature from release key ${keyIdHex(key.keyId)}`,
     line,
     `trusted comment: ${trusted}`,
     global.toString("base64"),
