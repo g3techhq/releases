@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: https://staging-donationengine.g3tech.net (SERVER_URL and APP_ORIGIN compiled in).\n\nThis is the first release published to g3techhq/releases. Since the earlier hand-installed dev builds:\n\n- The app now checks this repository for newer dev builds, then downloads, verifies and installs them itself (Update prompt, and an Updates card on About).\n- feat(charts): draw the donut, financials and giving trend with g3-charts\n- feat(settings): grow a theme change over the page from the click\n- feat(db): apply schema changes through a migrate step built on rollouts",
+  "pub_date": "2026-11-11T20:32:07Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.1/donation-engine-0.1.1.apk",
+      "signature": "untrusted comment: signature from the Tawny release key\nRURprRGHT7pD2v/LtqzFG2SqyvNsE91Q7qgJnywFwzVLFruYljLZpE/P+OAX9pVVZWujr1nkZBDZn1DC4YZJVoABNS6Gc35O+Ao=\ntrusted comment: timestamp:1794429127\tfile:donation-engine-0.1.1.apk\thashed\n8vAYLolZAUwn8FMErInkSIsMQtrckGNQ5u24AQ5FyM5Jq0r9qdsjOQ1SozQw68WzH8EkcPcNM/7R3ItwnsKyAA==\n"
+    }
+  }
+}
