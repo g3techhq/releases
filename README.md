@@ -15,8 +15,9 @@ updates come from g3-brand's catalog, which adds what a store app needs
 beyond a link: optional prompts with snooze, required updates, and policy per
 platform and channel. Use `store.json` only for an app without g3-brand, or
 a store build of an app that otherwise publishes here. Today this repository
-serves Snow Cut (Windows); Tawny publishes to its own repository,
-`Gateway3B/tawny`, and keeps a bridge here for installs from before the move.
+serves the g3 apps' sideloaded dev builds (Ad Sentinel, Donation Engine,
+Greenside Partee, Media Mancer, Swift Circuits on Android; Snow Cut on Android
+and Windows).
 
 The app's source can live anywhere, private repositories included: only the
 release files are published here.
@@ -167,23 +168,6 @@ The "must be newer" check reads that URL. `--prerelease` is refused with
 `--manifest asset`: GitHub's latest release is never a pre-release, so the URL
 would not serve it.
 
-### Moving an app out
-
-Installs built before the move still check `apps/<app>/latest.json` here.
-After publishing the first release in the app's own repository, point that
-file at it once:
-
-```bash
-node scripts/bridge-local.mjs --app <app> --from <owner/name> [--tag <tag>] [--dry-run]
-```
-
-It copies that release's `latest.json` asset here unchanged (version, notes,
-URLs and signatures), after checking every URL is a release download of
-`<owner/name>` and downloads, and the version is newer than the one here; then
-commits `release(<app>): <version> on latest from <owner/name>` and pushes.
-The installs update to a build that checks the new URL, and later releases
-need no bridge.
-
 ## Announcing a store release
 
 Once a store has the version live, run **Announce a store release** from the
@@ -191,7 +175,7 @@ Actions tab:
 
 | Input | Example |
 | --- | --- |
-| app | `tawny` |
+| app | `ad-sentinel` |
 | version | `1.2.0` |
 | stores | `android-store=https://play.google.com/store/apps/details?id=net.example ios-store=https://apps.apple.com/app/id123` |
 

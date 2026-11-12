@@ -7,13 +7,13 @@ name: Publish
 #     needs: [android, windows]
 #     uses: g3techhq/releases/.github/workflows/publish.yml@main
 #     with:
-#       app: tawny
+#       app: skicut
 #       version: "0.2.0"
 #       artifacts: release-*
 #       files: |
-#         android=Tawny_0.2.0.apk
-#         windows-x86_64-nsis=Tawny_0.2.0_x64-setup.zip
-#       attach: Tawny_0.2.0_x64-setup.exe
+#         android=SnowCut_0.2.0.apk
+#         windows-x86_64-nsis=SnowCut_0.2.0_x64-setup.zip
+#       attach: SnowCut_0.2.0_x64-setup.exe
 #       key_file: src/updater.rs
 #     secrets:
 #       updater_key: ${{ secrets.UPDATER_KEY }}

@@ -5,7 +5,7 @@
   "platforms": {
     "android": {
       "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.1/swift-circuits-0.1.1.apk",
-      "signature": "untrusted comment: signature from the Tawny release key\nRUQeAa8bPsbym95e7WmT0mw7gV5+S9MECKqLcjcDSqsDArYvzk7uMocq5TQsPdUxEfhYfT843WNEM15Gjn79oQnnBfhYWJN6uAA=\ntrusted comment: timestamp:1794430860\tfile:swift-circuits-0.1.1.apk\thashed\nlMpNmcXGm3g35DTXBxncy28MnWsciAIqH7e1UiZKhThcbDjkehbmVFQ8onE3hom211NJDtmt105Z4RgD0V6dBg==\n"
+      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbym95e7WmT0mw7gV5+S9MECKqLcjcDSqsDArYvzk7uMocq5TQsPdUxEfhYfT843WNEM15Gjn79oQnnBfhYWJN6uAA=\ntrusted comment: timestamp:1794430860\tfile:swift-circuits-0.1.1.apk\thashed\nlMpNmcXGm3g35DTXBxncy28MnWsciAIqH7e1UiZKhThcbDjkehbmVFQ8onE3hom211NJDtmt105Z4RgD0V6dBg==\n"
     }
   }
 }

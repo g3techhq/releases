@@ -5,7 +5,7 @@
   "platforms": {
     "android": {
       "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.1/media-mancer-0.1.1.apk",
-      "signature": "untrusted comment: signature from the Tawny release key\nRUTupLC4O9rfSOaXMyi2xxOdgASjPUr0AOkNMBcYb6Uu4wtuJG8x3v8TPygnjQLUD3nStJjMH9yZ1RPmcJ+qJ1D6V2OmvGONQAQ=\ntrusted comment: timestamp:1794430137\tfile:media-mancer-0.1.1.apk\thashed\nQzWLHoVOdIXeW+WXME0CH1coW48EDob3CSfrNSed2dHuRd9ADJJWeGzGNSodJNBsve9LvFcS5cCoQ+Qy3pZFCw==\n"
+      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSOaXMyi2xxOdgASjPUr0AOkNMBcYb6Uu4wtuJG8x3v8TPygnjQLUD3nStJjMH9yZ1RPmcJ+qJ1D6V2OmvGONQAQ=\ntrusted comment: timestamp:1794430137\tfile:media-mancer-0.1.1.apk\thashed\nQzWLHoVOdIXeW+WXME0CH1coW48EDob3CSfrNSed2dHuRd9ADJJWeGzGNSodJNBsve9LvFcS5cCoQ+Qy3pZFCw==\n"
     }
   }
 }

@@ -1,10 +1,10 @@
 // Writes an app's release file (`apps/<app>/latest.json` or `store.json`) in
 // the Tauri updater's format, which g3-native-plugins' `updater` reads.
 //
-//   node scripts/release-manifest.mjs --version 0.2.0 --out apps/tawny/latest.json \
-//     --base-url https://github.com/g3techhq/releases/releases/download/tawny-v0.2.0 \
+//   node scripts/release-manifest.mjs --version 0.2.0 --out apps/skicut/latest.json \
+//     --base-url https://github.com/g3techhq/releases/releases/download/skicut-v0.2.0 \
 //     [--notes-file notes.md] [--merge] \
-//     android=dist/Tawny_0.2.0.apk windows-x86_64-nsis=dist/Tawny_0.2.0_x64-setup.zip \
+//     android=dist/SnowCut_0.2.0.apk windows-x86_64-nsis=dist/SnowCut_0.2.0_x64-setup.zip \
 //     --store android-store=https://play.google.com/store/apps/details?id=net.example
 //
 // Each `platform=file` names a file already signed by release-signing.mjs:

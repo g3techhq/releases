@@ -5,7 +5,7 @@
   "platforms": {
     "android": {
       "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.1/ad-sentinel-0.1.1.apk",
-      "signature": "untrusted comment: signature from the Tawny release key\nRUQWUD5l1lI+zb0NQ9jlKqFRnS2skOa+w2rWcno5uuj7E61lGuGnIBDKGaAZiVUbJilIx/uka8qnPgo4uMC6AdqENLIRYpJ8Zg4=\ntrusted comment: timestamp:1794430294\tfile:ad-sentinel-0.1.1.apk\thashed\nTk4v1Wpan/y9RItvH4Mx7UUutmCJAbsKOjeeYqW0Z0X1rcvAnRBslMznYqVDTPBQILJlHhkbxvm7sMKa8aWGDg==\n"
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zb0NQ9jlKqFRnS2skOa+w2rWcno5uuj7E61lGuGnIBDKGaAZiVUbJilIx/uka8qnPgo4uMC6AdqENLIRYpJ8Zg4=\ntrusted comment: timestamp:1794430294\tfile:ad-sentinel-0.1.1.apk\thashed\nTk4v1Wpan/y9RItvH4Mx7UUutmCJAbsKOjeeYqW0Z0X1rcvAnRBslMznYqVDTPBQILJlHhkbxvm7sMKa8aWGDg==\n"
     }
   }
 }

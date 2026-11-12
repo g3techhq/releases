@@ -32,8 +32,6 @@ import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const SECRET_PREFIX = "g3-updater-key:v1:";
-// Tawny's key was made before the scripts moved here, under its own name.
-const LEGACY_PREFIXES = ["tawny-updater-key:v1:"];
 
 const base64url = (bytes) => Buffer.from(bytes).toString("base64url");
 
@@ -64,9 +62,10 @@ export function secretText(key) {
 
 export function parseSecret(text) {
   const trimmed = text.trim();
-  const prefix = [SECRET_PREFIX, ...LEGACY_PREFIXES].find((known) => trimmed.startsWith(known));
-  if (!prefix) throw new Error("UPDATER_KEY is not a key from `release-signing.mjs keygen`");
-  const bytes = Buffer.from(trimmed.slice(prefix.length), "base64");
+  if (!trimmed.startsWith(SECRET_PREFIX)) {
+    throw new Error("UPDATER_KEY is not a key from `release-signing.mjs keygen`");
+  }
+  const bytes = Buffer.from(trimmed.slice(SECRET_PREFIX.length), "base64");
   if (bytes.length !== 72) throw new Error("UPDATER_KEY has the wrong length");
   return {
     keyId: bytes.subarray(0, 8),

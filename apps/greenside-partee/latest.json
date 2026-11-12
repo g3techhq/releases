@@ -5,7 +5,7 @@
   "platforms": {
     "android": {
       "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.1/greenside-partee-0.1.1.apk",
-      "signature": "untrusted comment: signature from the Tawny release key\nRUROTcbBmkb4Dp1L0WkrzQHGC/23BlSlIWBwXJGTps82/raxRjU0uMamwJdw6uJ+q6OYBz+EkqnES10yiFv67VpI1AbmULQ17Qw=\ntrusted comment: timestamp:1794431672\tfile:greenside-partee-0.1.1.apk\thashed\nTEw66u7bQ/s5Iw4jMECWgzvI5qxSMZ7p6qak5QdhUYIA5jaZAJa9HYkW+aeGI3I6ZFFzVuhVVqr5X7U9k8jPBQ==\n"
+      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4Dp1L0WkrzQHGC/23BlSlIWBwXJGTps82/raxRjU0uMamwJdw6uJ+q6OYBz+EkqnES10yiFv67VpI1AbmULQ17Qw=\ntrusted comment: timestamp:1794431672\tfile:greenside-partee-0.1.1.apk\thashed\nTEw66u7bQ/s5Iw4jMECWgzvI5qxSMZ7p6qak5QdhUYIA5jaZAJa9HYkW+aeGI3I6ZFFzVuhVVqr5X7U9k8jPBQ==\n"
     }
   }
 }

@@ -17,17 +17,17 @@ import {
 } from "../scripts/release-signing.mjs";
 
 const SIGNATURE = "untrusted comment: signature\nRUQ...\ntrusted comment: t\nAAA=\n";
-const BASE = "https://github.com/g3techhq/releases/releases/download/tawny-v0.2.0";
+const BASE = "https://github.com/g3techhq/releases/releases/download/skicut-v0.2.0";
 
 test("a signed file verifies, and a changed one does not", async () => {
   const folder = mkdtempSync(join(tmpdir(), "g3-release-"));
   try {
     const key = generateKey();
-    const path = join(folder, "Tawny.apk");
+    const path = join(folder, "SnowCut.apk");
     writeFileSync(path, "release bytes");
     const signature = await signFile(key, path);
     assert.match(signature, /^untrusted comment: /);
-    assert.match(signature, /\ntrusted comment: timestamp:\d+\tfile:Tawny\.apk\thashed\n/);
+    assert.match(signature, /\ntrusted comment: timestamp:\d+\tfile:SnowCut.apk\thashed\n/);
     assert.ok(verifySignatureText(publicKeyText(key), await prehash(path), signature));
     writeFileSync(path, "release bytez");
     assert.ok(!verifySignatureText(publicKeyText(key), await prehash(path), signature));
@@ -51,10 +51,10 @@ test("the public key is minisign's format and the secret round-trips", () => {
   const back = parseSecret(secretText(key));
   assert.deepEqual(Buffer.from(back.seed), key.seed);
   assert.equal(publicKeyText(back), text);
-  // A key made under Tawny's old prefix still reads.
-  const legacy = secretText(key).replace("g3-updater-key:v1:", "tawny-updater-key:v1:");
-  assert.equal(publicKeyText(parseSecret(legacy)), text);
   assert.throws(() => parseSecret("RWQ..."), /not a key/);
+  // Only keygen's own prefix is accepted.
+  const other = secretText(key).replace("g3-updater-key:v1:", "other-key:v1:");
+  assert.throws(() => parseSecret(other), /not a key/);
 });
 
 test("downloads are listed under the release's URL, store pages as they are", () => {
@@ -64,10 +64,10 @@ test("downloads are listed under the release's URL, store pages as they are", ()
     pubDate: "2026-11-10T12:00:00Z",
     baseUrl: `${BASE}/`,
     downloads: [
-      { platform: "android", fileName: "Tawny_0.2.0.apk", signature: SIGNATURE },
+      { platform: "android", fileName: "SnowCut_0.2.0.apk", signature: SIGNATURE },
       {
         platform: "windows-x86_64-nsis",
-        fileName: "Tawny_0.2.0_x64-setup.zip",
+        fileName: "SnowCut_0.2.0_x64-setup.zip",
         signature: SIGNATURE,
       },
     ],
@@ -78,8 +78,8 @@ test("downloads are listed under the release's URL, store pages as they are", ()
     notes: "Faster startup.",
     pub_date: "2026-11-10T12:00:00Z",
     platforms: {
-      android: { url: `${BASE}/Tawny_0.2.0.apk`, signature: SIGNATURE },
-      "windows-x86_64-nsis": { url: `${BASE}/Tawny_0.2.0_x64-setup.zip`, signature: SIGNATURE },
+      android: { url: `${BASE}/SnowCut_0.2.0.apk`, signature: SIGNATURE },
+      "windows-x86_64-nsis": { url: `${BASE}/SnowCut_0.2.0_x64-setup.zip`, signature: SIGNATURE },
       "ios-store": { url: "https://testflight.apple.com/join/abc" },
     },
   });
@@ -127,9 +127,9 @@ test("entries the updater would refuse are refused here first", () => {
   assert.throws(() => buildManifest({ ...base, downloads: unknown }), /not a platform/);
   const storeAsDownload = [{ platform: "android", url: "https://play.google.com/x" }];
   assert.throws(() => buildManifest({ ...base, stores: storeAsDownload }), /not a store entry/);
-  const notAStore = [{ platform: "android-store", url: "https://example.com/Tawny.apk" }];
+  const notAStore = [{ platform: "android-store", url: "https://example.com/SnowCut.apk" }];
   assert.throws(() => buildManifest({ ...base, stores: notAStore }), /not a store link/);
-  const spaced = [{ platform: "android", fileName: "Tawny 0.2.0.apk", signature: SIGNATURE }];
+  const spaced = [{ platform: "android", fileName: "SnowCut 0.2.0.apk", signature: SIGNATURE }];
   assert.throws(() => buildManifest({ ...base, downloads: spaced }), /only letters/);
   const plainHttp = [{ platform: "android", fileName: "a.apk", signature: SIGNATURE }];
   assert.throws(

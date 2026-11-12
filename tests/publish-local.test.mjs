@@ -2,7 +2,6 @@
 // GitHub.
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { bridgeSource, checkBridged, parseBridgeArgs } from "../scripts/bridge-local.mjs";
 import {
   checkNewer,
   compareSemver,
@@ -274,27 +273,4 @@ test("asset mode refuses a pre-release and a file named latest.json", () => {
   assert.throws(() => plan("--manifest", "store"), /commit or asset/);
   assert.throws(() => plan("--repo", "releases"), /<owner>\/<name>/);
   assert.throws(() => plan("--tag", "v1.2.0 beta"), /--tag/);
-});
-
-test("a bridge copies another repository's release only when it is that repository's", () => {
-  const options = parseBridgeArgs(["--app", "tawny", "--from", "Gateway3B/tawny"]);
-  assert.equal(
-    bridgeSource(options),
-    "https://github.com/Gateway3B/tawny/releases/latest/download/latest.json",
-  );
-  assert.equal(
-    bridgeSource({ ...options, tag: "v0.1.3" }),
-    "https://github.com/Gateway3B/tawny/releases/download/v0.1.3/latest.json",
-  );
-  const url = "https://github.com/Gateway3B/tawny/releases/download/v0.1.3/Tawny_0.1.3.apk";
-  const manifest = { version: "0.1.3", platforms: { android: { url, signature: SIGNATURE } } };
-  assert.deepEqual(checkBridged(manifest, "Gateway3B/tawny"), [url]);
-  assert.throws(() => checkBridged(manifest, "Gateway3B/other"), /not under/);
-  assert.throws(
-    () => checkBridged({ version: "0.1.3", platforms: { android: { url } } }, "Gateway3B/tawny"),
-    /unsigned/,
-  );
-  assert.throws(() => checkBridged({ version: "x", platforms: {} }, "Gateway3B/tawny"), /version/);
-  assert.throws(() => parseBridgeArgs(["--app", "tawny"]), /--from/);
-  assert.throws(() => parseBridgeArgs(["--from", "a/b", "--app", "tawny", "--x"]), /Unknown/);
 });
