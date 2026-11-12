@@ -1,11 +1,11 @@
 {
-  "version": "0.1.1",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging (https://staging-swiftcircuits.g3tech.net), catalog https://catalog.g3tech.net, release channel development.\n\nSince the 61dc1a8 dev build:\n- 69f6c28 feat(updater): let sideloaded Android dev builds update themselves\n- e3ccf2b chore(release): swift-circuits 0.1.1",
-  "pub_date": "2026-11-11T21:01:00Z",
+  "version": "0.1.2",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging-swiftcircuits.g3tech.net (catalog https://catalog.g3tech.net, development channel).\n\nChanges since the last release:\n\n- chore(release): swift-circuits 0.1.2 (96d05cd)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)\n- g3-ui: an iOS toolbar segment pill no longer cuts its longest label on a phone, and an expanded AdaptiveNav rail opens to 15rem again (g3techhq/g3-ui@ebcdb7a)",
+  "pub_date": "2026-11-12T22:53:38Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.1/swift-circuits-0.1.1.apk",
-      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbym95e7WmT0mw7gV5+S9MECKqLcjcDSqsDArYvzk7uMocq5TQsPdUxEfhYfT843WNEM15Gjn79oQnnBfhYWJN6uAA=\ntrusted comment: timestamp:1794430860\tfile:swift-circuits-0.1.1.apk\thashed\nlMpNmcXGm3g35DTXBxncy28MnWsciAIqH7e1UiZKhThcbDjkehbmVFQ8onE3hom211NJDtmt105Z4RgD0V6dBg==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.2/swift-circuits-0.1.2.apk",
+      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbymynTBLWik3UqX1qVAVi092j8rMsOWsvAeoZV974OUeq/RAnR8/VAQpuQmliBqy3Qrm3EvSI/812k28mdBCg5/gQ=\ntrusted comment: timestamp:1794524018\tfile:swift-circuits-0.1.2.apk\thashed\nJirTF/6UkjqbcUfSiwAtd1AtsuLYdAMXcmkXDQJn5lmNWsADFbdPRnBuVm6NLiUHK13m68glSmC0RXm/tr2rBg==\n"
     }
   }
 }
