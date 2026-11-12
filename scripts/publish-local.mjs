@@ -524,7 +524,12 @@ The draft ${plan.tag} was created but not published` +
     console.log(`Published https://github.com/${plan.repo}/releases/tag/${plan.tag}`);
 
     if (asset) {
-      const served = await fetchRelease(plan.manifestUrl).catch(() => undefined);
+      // GitHub takes a few seconds to move releases/latest to a new release.
+      let served;
+      for (let attempt = 1; attempt <= 6 && served?.version !== plan.version; attempt += 1) {
+        if (attempt > 1) await new Promise((done) => setTimeout(done, 5000));
+        served = await fetchRelease(plan.manifestUrl).catch(() => undefined);
+      }
       if (served?.version === plan.version)
         console.log(`${plan.manifestUrl} serves ${plan.version}`);
       else
