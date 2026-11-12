@@ -1,11 +1,11 @@
 {
-  "version": "0.1.1",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: https://staging-mediamancer.g3tech.net (staging).\n\nChanges since the 2026-11-11 dev build (1fd9ac9):\n- 7f87adb chore(release): media-mancer 0.1.1\n- 48fa5e6 feat(updater): let sideloaded dev builds update themselves\n- c81d4a7 feat(lists): search, sort and filter a list's titles",
-  "pub_date": "2026-11-11T20:48:57Z",
+  "version": "0.1.2",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging-mediamancer.g3tech.net.\n\nChanges since the last release:\n\n- chore(release): media-mancer 0.1.2 (64dfd00)\n- fix(updater): commit the layout utilities the update prompt uses (68d8914)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)",
+  "pub_date": "2026-11-12T22:28:42Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.1/media-mancer-0.1.1.apk",
-      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSOaXMyi2xxOdgASjPUr0AOkNMBcYb6Uu4wtuJG8x3v8TPygnjQLUD3nStJjMH9yZ1RPmcJ+qJ1D6V2OmvGONQAQ=\ntrusted comment: timestamp:1794430137\tfile:media-mancer-0.1.1.apk\thashed\nQzWLHoVOdIXeW+WXME0CH1coW48EDob3CSfrNSed2dHuRd9ADJJWeGzGNSodJNBsve9LvFcS5cCoQ+Qy3pZFCw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.2/media-mancer-0.1.2.apk",
+      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSFxZbx5zpc+Im+VZMbXYBOGw3m7C8CInFYfhnHqOiuolN4VHexiKnrkSBlmm60vvzA18zAyJMkA8+kp1uQdfYQk=\ntrusted comment: timestamp:1794522522\tfile:media-mancer-0.1.2.apk\thashed\n6EKYh//dwdDPt4u/F7EAyvGTHYPNks/WRvCPS7DkLZDa1uoZokSLGl28c/TKAzkTZnjA5pC5i0qOdhWlCtrYBw==\n"
     }
   }
 }
