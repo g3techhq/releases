@@ -15,7 +15,8 @@ updates come from g3-brand's catalog, which adds what a store app needs
 beyond a link: optional prompts with snooze, required updates, and policy per
 platform and channel. Use `store.json` only for an app without g3-brand, or
 a store build of an app that otherwise publishes here. Today this repository
-serves Tawny (Android APK, Windows) and Snow Cut (Windows).
+serves Snow Cut (Windows); Tawny publishes to its own repository,
+`Gateway3B/tawny`, and keeps a bridge here for installs from before the move.
 
 The app's source can live anywhere, private repositories included: only the
 release files are published here.
@@ -102,9 +103,6 @@ Play does not have yet.
    File names may use letters, digits, `.`, `_` and `-`: GitHub renames
    anything else on upload, which would break its URL.
 
-Tawny (`Gateway3B/tawny`, `.github/workflows/release.yml`) is a complete
-example.
-
 ## Publishing from a workstation
 
 `scripts/publish-local.mjs` does what `publish.yml` does, from a machine
@@ -127,7 +125,8 @@ the one in `--public-key` (a `.pub` file, a source file holding the key,
 or the key itself). Then it signs each `--file` (signatures go to a
 temporary folder, not beside the files), creates the release as a draft
 titled `<App> <version>` on `main`, uploads the files, their `.minisig`
-signatures and the `--attach` extras, publishes it (never marked latest),
+signatures and the `--attach` extras, checks they are all on the draft,
+publishes it (never marked latest),
 and only then writes `apps/<app>/latest.json`, commits
 `release(<app>): <version> on latest` and pushes to `main`, pulling with
 rebase and retrying if another release got there first.
@@ -141,6 +140,49 @@ nothing.
 
 If the release is created but a later step fails, the script says so and
 leaves `latest.json` alone: no install is sent anywhere until it is pushed.
+
+### An app's own public repository
+
+An app whose source repository is public can keep its releases there
+instead, where they download anonymously:
+
+```bash
+node scripts/publish-local.mjs --repo <owner/name> --manifest asset --app <app> --version <x.y.z> ...
+```
+
+`--repo <owner/name>` publishes the release in that repository (default
+`g3techhq/releases`). `--manifest asset` (default `commit`) builds
+`latest.json` the same way but uploads it as an asset of the release instead
+of committing it here, so this checkout is neither needed nor touched. The
+release is then tagged `v<version>` (`--tag <tag>` overrides the tag in
+either mode), created as a draft on the `--source` commit when `--source`
+names the same repository (otherwise on `main`), checked to have every file,
+and only then published as a normal release marked latest. The app reads:
+
+```
+https://github.com/<owner/name>/releases/latest/download/latest.json
+```
+
+The "must be newer" check reads that URL. `--prerelease` is refused with
+`--manifest asset`: GitHub's latest release is never a pre-release, so the URL
+would not serve it.
+
+### Moving an app out
+
+Installs built before the move still check `apps/<app>/latest.json` here.
+After publishing the first release in the app's own repository, point that
+file at it once:
+
+```bash
+node scripts/bridge-local.mjs --app <app> --from <owner/name> [--tag <tag>] [--dry-run]
+```
+
+It copies that release's `latest.json` asset here unchanged (version, notes,
+URLs and signatures), after checking every URL is a release download of
+`<owner/name>` and downloads, and the version is newer than the one here; then
+commits `release(<app>): <version> on latest from <owner/name>` and pushes.
+The installs update to a build that checks the new URL, and later releases
+need no bridge.
 
 ## Announcing a store release
 

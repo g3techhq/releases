@@ -3,16 +3,25 @@
 //   node scripts/publish-local.mjs --app <app> --version <x.y.z> --key <app>-updater.key \
 //     --file <platform>=<path> [--file ...] [--attach <path> ...] [--notes <text or @file>] \
 //     [--source <repo@sha>] [--public-key <file or text>] [--name <App name>] \
+//     [--repo <owner/name>] [--manifest commit|asset] [--tag <tag>] \
 //     [--prerelease] [--dry-run]
 //
 // It signs each file with the app's key, creates the release `<app>-v<version>`
-// of g3techhq/releases with `gh` (a draft, then published, never marked
-// latest), uploads the files, their signatures and the `--attach` extras, and
-// only then writes `apps/<app>/latest.json` and pushes it to main, so no app
-// is sent to a file that is not there yet.
+// of g3techhq/releases (or `--repo`) with `gh` as a draft, uploads the files,
+// their signatures and the `--attach` extras, checks they are all there, and
+// only then publishes it (never marked latest) and writes
+// `apps/<app>/latest.json` here and pushes it to main, so no app is sent to a
+// file that is not there yet.
 //
-// Run it from a clean checkout of this repository on main. `--dry-run` signs
-// into a temporary folder and prints what it would do, creating nothing.
+// With `--manifest asset`, latest.json is not committed here: it is uploaded
+// as an asset of the release itself, which is published as a normal release
+// marked latest, so `https://github.com/<repo>/releases/latest/download/latest.json`
+// serves it. The tag is then `v<version>`. This is for an app whose own
+// source repository is public.
+//
+// Run it from a clean checkout of this repository on main (not needed with
+// `--manifest asset`). `--dry-run` signs into a temporary folder and prints
+// what it would do, creating nothing.
 import { spawnSync } from "node:child_process";
 import {
   existsSync,
@@ -40,7 +49,12 @@ export const CHANNEL = "latest";
 export const USAGE =
   "Usage: node scripts/publish-local.mjs --app <app> --version <x.y.z> --key <path to <app>-updater.key> " +
   "--file <platform>=<path> [--file ...] [--attach <path> ...] [--notes <text or @file>] " +
-  "[--source <repo@sha>] [--public-key <file|text>] [--name <App name>] [--prerelease] [--dry-run]";
+  "[--source <repo@sha>] [--public-key <file|text>] [--name <App name>] " +
+  "[--repo <owner/name>] [--manifest commit|asset] [--tag <tag>] [--prerelease] [--dry-run]";
+export const MANIFEST_ASSET = `${CHANNEL}.json`;
+const MANIFEST_MODES = new Set(["commit", "asset"]);
+const REPO_NAME = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
+const TAG = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 
 const APP = /^[a-z0-9][a-z0-9-]*$/;
 const SEMVER =
@@ -48,7 +62,18 @@ const SEMVER =
 const FILE_NAME = /^[A-Za-z0-9._-]+$/;
 const SOURCE = /^[A-Za-z0-9_.-]+(\/[A-Za-z0-9_.-]+)?@[0-9a-f]{7,40}$/;
 
-const VALUE_OPTIONS = new Set(["app", "version", "key", "notes", "source", "public-key", "name"]);
+const VALUE_OPTIONS = new Set([
+  "app",
+  "version",
+  "key",
+  "notes",
+  "source",
+  "public-key",
+  "name",
+  "repo",
+  "manifest",
+  "tag",
+]);
 const LIST_OPTIONS = new Set(["file", "attach"]);
 const FLAGS = new Set(["prerelease", "dry-run", "help"]);
 
@@ -147,11 +172,16 @@ export function displayName(app) {
     .join(" ");
 }
 
-export const releaseTag = (app, version) => `${app}-v${version}`;
+/** The tag: `<app>-v<version>` in the shared repository, `v<version>` in an app's own. */
+export const releaseTag = (app, version, manifest = "commit") =>
+  manifest === "asset" ? `v${version}` : `${app}-v${version}`;
 
 /** Where GitHub serves a release's assets, which latest.json points at. */
-export const downloadBase = (app, version, repo = REPO) =>
-  `https://github.com/${repo}/releases/download/${releaseTag(app, version)}`;
+export const downloadBase = (repo, tag) => `https://github.com/${repo}/releases/download/${tag}`;
+
+/** Where GitHub serves the latest.json asset of a repository's latest release. */
+export const latestAssetUrl = (repo) =>
+  `https://github.com/${repo}/releases/latest/download/${MANIFEST_ASSET}`;
 
 /** Whether a public key file (or a source file holding one) names this key's public key. */
 export function keyMatches(key, publicKeySource) {
@@ -176,6 +206,20 @@ export function planRelease(options, notesText) {
   if (options.source !== undefined && !SOURCE.test(options.source)) {
     throw new Error(`--source expects <repo>@<commit sha>, got ${options.source}`);
   }
+  const repo = options.repo ?? REPO;
+  if (!REPO_NAME.test(repo)) throw new Error(`--repo expects <owner>/<name>, got ${repo}`);
+  const manifest = options.manifest ?? "commit";
+  if (!MANIFEST_MODES.has(manifest)) {
+    throw new Error(`--manifest is commit or asset, got ${options.manifest}`);
+  }
+  if (manifest === "asset" && options.prerelease) {
+    throw new Error(
+      "--prerelease cannot be used with --manifest asset: latest.json is served only by the latest release, which is never a pre-release",
+    );
+  }
+  if (options.tag !== undefined && !TAG.test(options.tag)) {
+    throw new Error(`--tag may use letters, digits, dots, hyphens and underscores: ${options.tag}`);
+  }
   const names = new Set();
   const asset = (path) => {
     const name = basename(path);
@@ -194,8 +238,15 @@ export function planRelease(options, notesText) {
     return { platform, path, name: asset(path) };
   });
   const attach = options.attach.map((path) => ({ path, name: asset(path) }));
+  if (manifest === "asset" && names.has(MANIFEST_ASSET)) {
+    throw new Error(`${MANIFEST_ASSET} is made here with --manifest asset`);
+  }
   const app = options.app;
-  const tag = releaseTag(app, version);
+  const tag = options.tag ?? releaseTag(app, version, manifest);
+  // The tag goes on the commit the release was built from when it is in the
+  // same repository; otherwise on main.
+  const [sourceRepo, sourceSha] = options.source?.split("@") ?? [];
+  const target = sourceRepo?.toLowerCase() === repo.toLowerCase() ? sourceSha : "main";
   const notes = notesText?.trim() || undefined;
   const pageNotes = [
     notes ?? `${app} ${version}`,
@@ -207,9 +258,16 @@ export function planRelease(options, notesText) {
     app,
     version,
     tag,
+    repo,
+    manifest,
+    target,
     title: `${options.name ?? displayName(app)} ${version}`,
-    baseUrl: downloadBase(app, version),
+    baseUrl: downloadBase(repo, tag),
     manifestPath: `apps/${app}/${CHANNEL}.json`,
+    manifestUrl:
+      manifest === "asset"
+        ? latestAssetUrl(repo)
+        : `https://raw.githubusercontent.com/${REPO}/main/apps/${app}/${CHANNEL}.json`,
     commitMessage: `release(${app}): ${version} on ${CHANNEL}`,
     files,
     attach,
@@ -242,17 +300,22 @@ export function releaseManifest(plan, signatures, pubDate, existing) {
   });
 }
 
-/** The `gh` arguments that create the draft and then publish it. */
+/**
+ * The `gh` arguments that create the draft and then publish it: never marked
+ * latest when latest.json is committed, marked latest when it is an asset.
+ */
 export function releaseCommands(plan, notesFile, uploads) {
-  const create = ["release", "create", plan.tag, "--repo", REPO, "--target", "main", "--draft"];
+  const { tag, repo, target } = plan;
+  const create = ["release", "create", tag, "--repo", repo, "--target", target, "--draft"];
   create.push("--latest=false", "--title", plan.title, "--notes-file", notesFile);
   if (plan.prerelease) create.push("--prerelease");
   create.push(...uploads);
-  const publish = ["release", "edit", plan.tag, "--repo", REPO, "--draft=false", "--latest=false"];
+  const latest = plan.manifest === "asset" ? "--latest" : "--latest=false";
+  const publish = ["release", "edit", tag, "--repo", repo, "--draft=false", latest];
   return { create, publish };
 }
 
-function run(command, args, { cwd, allowFailure = false } = {}) {
+export function run(command, args, { cwd, allowFailure = false } = {}) {
   const result = spawnSync(command, args, { cwd, encoding: "utf8" });
   if (result.error) throw new Error(`Could not run ${command}: ${result.error.message}`);
   if (result.status !== 0 && !allowFailure) {
@@ -266,12 +329,12 @@ function run(command, args, { cwd, allowFailure = false } = {}) {
 const NOT_FOUND = /not found|HTTP 404/i;
 
 /** Whether a tag or a release (drafts included) already has this name. */
-function tagTaken(tag) {
-  const ref = run("gh", ["api", `repos/${REPO}/git/ref/tags/${tag}`], { allowFailure: true });
+function tagTaken(tag, repo) {
+  const ref = run("gh", ["api", `repos/${repo}/git/ref/tags/${tag}`], { allowFailure: true });
   if (ref.status === 0) return `the tag ${tag} exists`;
   if (!NOT_FOUND.test(ref.stderr))
     throw new Error(`Could not check the tag ${tag}: ${ref.stderr.trim()}`);
-  const release = run("gh", ["release", "view", tag, "--repo", REPO, "--json", "isDraft"], {
+  const release = run("gh", ["release", "view", tag, "--repo", repo, "--json", "isDraft"], {
     allowFailure: true,
   });
   if (release.status === 0) return `a release ${tag} exists (perhaps a draft)`;
@@ -281,7 +344,7 @@ function tagTaken(tag) {
   return undefined;
 }
 
-function prepareCheckout(root, dryRun) {
+export function prepareCheckout(root, dryRun) {
   const branch = run("git", ["rev-parse", "--abbrev-ref", "HEAD"], { cwd: root }).stdout.trim();
   const dirty = run("git", ["status", "--porcelain"], { cwd: root }).stdout.trim();
   const problems = [];
@@ -295,7 +358,7 @@ function prepareCheckout(root, dryRun) {
   if (!dryRun) run("git", ["pull", "--rebase", "--quiet", "origin", "main"], { cwd: root });
 }
 
-function currentRelease(root, manifestPath) {
+export function currentRelease(root, manifestPath) {
   const shown = run("git", ["show", `origin/main:${manifestPath}`], {
     cwd: root,
     allowFailure: true,
@@ -303,7 +366,21 @@ function currentRelease(root, manifestPath) {
   return shown.status === 0 ? JSON.parse(shown.stdout) : undefined;
 }
 
-function pushManifest(root, plan) {
+/**
+ * A release file served over HTTPS (anonymously, following redirects), or
+ * undefined when there is none yet (404).
+ */
+export async function fetchRelease(url) {
+  const response = await fetch(url, {
+    redirect: "follow",
+    headers: { accept: "application/json" },
+  });
+  if (response.status === 404) return undefined;
+  if (!response.ok) throw new Error(`Could not read ${url}: HTTP ${response.status}`);
+  return JSON.parse(await response.text());
+}
+
+export function pushManifest(root, plan) {
   run("git", ["add", plan.manifestPath], { cwd: root });
   run("git", ["commit", "--quiet", "-m", plan.commitMessage, "--", plan.manifestPath], {
     cwd: root,
@@ -350,11 +427,15 @@ async function main(argv) {
   }
 
   const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-  prepareCheckout(root, options.dryRun);
-  const current = currentRelease(root, plan.manifestPath);
+  const asset = plan.manifest === "asset";
+  // With the manifest an asset, this checkout is not written to.
+  if (!asset) prepareCheckout(root, options.dryRun);
+  const current = asset
+    ? await fetchRelease(plan.manifestUrl)
+    : currentRelease(root, plan.manifestPath);
   checkNewer(plan.version, current);
-  const taken = tagTaken(plan.tag);
-  if (taken) throw new Error(`Refusing to publish: ${taken} on ${REPO}`);
+  const taken = tagTaken(plan.tag, plan.repo);
+  if (taken) throw new Error(`Refusing to publish: ${taken} on ${plan.repo}`);
 
   const work = mkdtempSync(join(tmpdir(), "g3-publish-"));
   try {
@@ -374,36 +455,82 @@ async function main(argv) {
     }
     uploads.push(...plan.attach.map(({ path }) => path));
     const notesFile = join(work, "notes.md");
-    writeFileSync(notesFile, `${plan.pageNotes}\n`);
+    writeFileSync(
+      notesFile,
+      `${plan.pageNotes}
+`,
+    );
     const pubDate = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
     const manifest = releaseManifest(plan, signatures, pubDate, current);
-    const manifestText = `${JSON.stringify(manifest, null, 2)}\n`;
+    const manifestText = `${JSON.stringify(manifest, null, 2)}
+`;
+    if (asset) {
+      const manifestFile = join(work, MANIFEST_ASSET);
+      writeFileSync(manifestFile, manifestText);
+      uploads.push(manifestFile);
+    }
     const { create, publish } = releaseCommands(plan, notesFile, uploads);
 
     if (options.dryRun) {
-      console.log(`\nDry run: nothing was created. A real run would:`);
+      console.log(`
+Dry run: nothing was created. A real run would:`);
       console.log(`  gh ${create.join(" ")}`);
+      console.log(`  check every file is on the draft`);
       console.log(`  gh ${publish.join(" ")}`);
-      console.log(`  write ${plan.manifestPath}:\n${manifestText}`);
-      console.log(`  git commit -m "${plan.commitMessage}" and push to origin main`);
+      if (asset) {
+        console.log(`  serve ${plan.manifestUrl}:
+${manifestText}`);
+      } else {
+        console.log(`  write ${plan.manifestPath}:
+${manifestText}`);
+        console.log(`  git commit -m "${plan.commitMessage}" and push to origin main`);
+      }
       return;
     }
 
+    const cleanUp = `gh release delete ${plan.tag} --repo ${plan.repo} --cleanup-tag`;
     run("gh", create);
     try {
-      run("gh", publish);
-      const view = run("gh", ["release", "view", plan.tag, "--repo", REPO, "--json", "assets"]);
+      // Every file is checked on the draft, before any install can see it.
+      const view = run("gh", [
+        "release",
+        "view",
+        plan.tag,
+        "--repo",
+        plan.repo,
+        "--json",
+        "assets",
+      ]);
       const uploaded = new Set(JSON.parse(view.stdout).assets.map(({ name }) => name));
       const missing = uploads.map((path) => basename(path)).filter((name) => !uploaded.has(name));
-      if (missing.length > 0) throw new Error(`The release is missing ${missing.join(", ")}`);
+      if (missing.length > 0) throw new Error(`The draft is missing ${missing.join(", ")}`);
     } catch (error) {
       throw new Error(
-        `${error.message}\nThe release ${plan.tag} was created but ${plan.manifestPath} was not ` +
-          `written. Fix it on GitHub, or remove it: gh release delete ${plan.tag} --repo ${REPO} --cleanup-tag`,
+        `${error.message}
+The draft ${plan.tag} was created but not published. ` +
+          `Fix it on GitHub, or remove it: ${cleanUp}`,
       );
     }
-    console.log(`Published https://github.com/${REPO}/releases/tag/${plan.tag}`);
+    try {
+      run("gh", publish);
+    } catch (error) {
+      throw new Error(
+        `${error.message}
+The draft ${plan.tag} was created but not published` +
+          `${asset ? "" : `, and ${plan.manifestPath} was not written`}. ` +
+          `Fix it on GitHub, or remove it: ${cleanUp}`,
+      );
+    }
+    console.log(`Published https://github.com/${plan.repo}/releases/tag/${plan.tag}`);
 
+    if (asset) {
+      const served = await fetchRelease(plan.manifestUrl).catch(() => undefined);
+      if (served?.version === plan.version)
+        console.log(`${plan.manifestUrl} serves ${plan.version}`);
+      else
+        console.warn(`warning: ${plan.manifestUrl} does not serve ${plan.version} yet; check it`);
+      return;
+    }
     mkdirSync(dirname(join(root, plan.manifestPath)), { recursive: true });
     writeFileSync(join(root, plan.manifestPath), manifestText);
     pushManifest(root, plan);

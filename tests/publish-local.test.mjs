@@ -2,11 +2,13 @@
 // GitHub.
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { bridgeSource, checkBridged, parseBridgeArgs } from "../scripts/bridge-local.mjs";
 import {
   checkNewer,
   compareSemver,
   displayName,
   keyMatches,
+  latestAssetUrl,
   parseArgs,
   planRelease,
   releaseCommands,
@@ -203,4 +205,96 @@ test("the release is a draft until published, never marked latest", () => {
     "--latest=false",
   ]);
   assert.equal(displayName("greenside-partee"), "Greenside Partee");
+});
+
+test("--repo and --manifest asset publish into an app's own repository", () => {
+  const plan = planRelease(
+    parseArgs(
+      args(
+        "--repo",
+        "Gateway3B/ad-sentinel",
+        "--manifest",
+        "asset",
+        "--source",
+        "Gateway3B/ad-sentinel@0123abcd",
+      ),
+    ),
+  );
+  assert.equal(plan.repo, "Gateway3B/ad-sentinel");
+  assert.equal(plan.tag, "v1.2.0");
+  assert.equal(plan.target, "0123abcd");
+  assert.equal(plan.baseUrl, "https://github.com/Gateway3B/ad-sentinel/releases/download/v1.2.0");
+  assert.equal(plan.manifestUrl, latestAssetUrl("Gateway3B/ad-sentinel"));
+  assert.equal(
+    latestAssetUrl("Gateway3B/ad-sentinel"),
+    "https://github.com/Gateway3B/ad-sentinel/releases/latest/download/latest.json",
+  );
+  const manifest = releaseManifest(plan, { "AdSentinel_1.2.0.apk": SIGNATURE }, "t", undefined);
+  assert.equal(
+    manifest.platforms.android.url,
+    "https://github.com/Gateway3B/ad-sentinel/releases/download/v1.2.0/AdSentinel_1.2.0.apk",
+  );
+
+  const { create, publish } = releaseCommands(plan, "notes.md", ["a.apk", "latest.json"]);
+  assert.deepEqual(create.slice(0, 8), [
+    "release",
+    "create",
+    "v1.2.0",
+    "--repo",
+    "Gateway3B/ad-sentinel",
+    "--target",
+    "0123abcd",
+    "--draft",
+  ]);
+  assert.ok(!create.includes("--prerelease"));
+  assert.deepEqual(publish, [
+    "release",
+    "edit",
+    "v1.2.0",
+    "--repo",
+    "Gateway3B/ad-sentinel",
+    "--draft=false",
+    "--latest",
+  ]);
+
+  const tagged = planRelease(parseArgs(args("--manifest", "asset", "--tag", "release-1.2.0")));
+  assert.equal(tagged.tag, "release-1.2.0");
+  assert.equal(tagged.repo, "g3techhq/releases");
+  assert.equal(tagged.target, "main");
+  const commit = planRelease(parseArgs(args("--repo", "Gateway3B/ad-sentinel")));
+  assert.equal(commit.tag, "ad-sentinel-v1.2.0");
+  assert.equal(commit.manifest, "commit");
+});
+
+test("asset mode refuses a pre-release and a file named latest.json", () => {
+  const plan = (...extra) => planRelease(parseArgs(args(...extra)));
+  assert.throws(() => plan("--manifest", "asset", "--prerelease"), /--prerelease cannot/);
+  assert.throws(() => plan("--manifest", "asset", "--attach", "dist/latest.json"), /made here/);
+  assert.doesNotThrow(() => plan("--attach", "dist/latest.json"));
+  assert.throws(() => plan("--manifest", "store"), /commit or asset/);
+  assert.throws(() => plan("--repo", "releases"), /<owner>\/<name>/);
+  assert.throws(() => plan("--tag", "v1.2.0 beta"), /--tag/);
+});
+
+test("a bridge copies another repository's release only when it is that repository's", () => {
+  const options = parseBridgeArgs(["--app", "tawny", "--from", "Gateway3B/tawny"]);
+  assert.equal(
+    bridgeSource(options),
+    "https://github.com/Gateway3B/tawny/releases/latest/download/latest.json",
+  );
+  assert.equal(
+    bridgeSource({ ...options, tag: "v0.1.3" }),
+    "https://github.com/Gateway3B/tawny/releases/download/v0.1.3/latest.json",
+  );
+  const url = "https://github.com/Gateway3B/tawny/releases/download/v0.1.3/Tawny_0.1.3.apk";
+  const manifest = { version: "0.1.3", platforms: { android: { url, signature: SIGNATURE } } };
+  assert.deepEqual(checkBridged(manifest, "Gateway3B/tawny"), [url]);
+  assert.throws(() => checkBridged(manifest, "Gateway3B/other"), /not under/);
+  assert.throws(
+    () => checkBridged({ version: "0.1.3", platforms: { android: { url } } }, "Gateway3B/tawny"),
+    /unsigned/,
+  );
+  assert.throws(() => checkBridged({ version: "x", platforms: {} }, "Gateway3B/tawny"), /version/);
+  assert.throws(() => parseBridgeArgs(["--app", "tawny"]), /--from/);
+  assert.throws(() => parseBridgeArgs(["--from", "a/b", "--app", "tawny", "--x"]), /Unknown/);
 });
