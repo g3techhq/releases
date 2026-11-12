@@ -1,11 +1,11 @@
 {
-  "version": "0.1.1",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: https://staging-donationengine.g3tech.net (SERVER_URL and APP_ORIGIN compiled in).\n\nThis is the first release published to g3techhq/releases. Since the earlier hand-installed dev builds:\n\n- The app now checks this repository for newer dev builds, then downloads, verifies and installs them itself (Update prompt, and an Updates card on About).\n- feat(charts): draw the donut, financials and giving trend with g3-charts\n- feat(settings): grow a theme change over the page from the click\n- feat(db): apply schema changes through a migrate step built on rollouts",
-  "pub_date": "2026-11-11T20:32:07Z",
+  "version": "0.1.2",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging-donationengine.g3tech.net.\n\nChanges since the last release:\n\n- chore(release): donation-engine 0.1.2 (5e56688)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)\n- g3-ui (uncommitted at build time, committed in this run): an iOS toolbar segment pill no longer cuts its longest label on a phone, and an expanded AdaptiveNav rail opens to 15rem again",
+  "pub_date": "2026-11-12T22:39:54Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.1/donation-engine-0.1.1.apk",
-      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2v/LtqzFG2SqyvNsE91Q7qgJnywFwzVLFruYljLZpE/P+OAX9pVVZWujr1nkZBDZn1DC4YZJVoABNS6Gc35O+Ao=\ntrusted comment: timestamp:1794429127\tfile:donation-engine-0.1.1.apk\thashed\n8vAYLolZAUwn8FMErInkSIsMQtrckGNQ5u24AQ5FyM5Jq0r9qdsjOQ1SozQw68WzH8EkcPcNM/7R3ItwnsKyAA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.2/donation-engine-0.1.2.apk",
+      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2mj+E0Rwy/5Mo15RleYHVKXHieZVqIEP1D4TOrQoN3HjUXUUDNPdQaFgmJ1swVYxD6j9wr/x9/gsEMiclLZtuAQ=\ntrusted comment: timestamp:1794523194\tfile:donation-engine-0.1.2.apk\thashed\nKs6VQ1n7Ov0X4WbQHjTym3IbDPheDNba0m6Anxp/uxhnzCrPIkkaY7WSiGqKq/ccFX40mnjhSb6AlvEIln6UCw==\n"
     }
   }
 }
