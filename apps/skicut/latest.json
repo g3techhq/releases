@@ -1,11 +1,15 @@
 {
-  "version": "0.1.1",
-  "notes": "A debug-signed dev build of Snow Cut for Android, for sideloading. It is the first build with the in-app updater: About, on Your cuts, checks this repository for newer releases, downloads the APK, checks its signature and hands it to Android to install. Later dev builds install over this one.\n\nThere is no backend; everything runs on the phone. Built from the local skicut repository (it has no GitHub remote).\n\nRecent changes:\n- The sideloaded Android build updates itself (About sheet and a check at launch).\n- Full screen on the phone turns to landscape.\n- A beat at the very end of a song no longer crashes its analysis.\n- The phone's picker shows the clips, its bar covers the list, and job panics say why.\n- The music's waveform on the shot bar; editor drags ignore taps and stray touches.",
-  "pub_date": "2026-11-11T21:06:40Z",
+  "version": "0.1.2",
+  "notes": "Snow Cut 0.1.2: the first release with the Windows desktop app alongside the Android build, so both update from here.\n\n- Windows: SnowCut_0.1.2_x64-setup.exe installs Snow Cut for the current user. Installed copies check this repository once per launch and update from About, on Your cuts.\n- Android: a debug-signed dev build for sideloading; it installs over 0.1.1, and 0.1.1's in-app updater picks it up.\n\nNo app changes since 0.1.1 beyond the version. Built from the local skicut repository (it has no GitHub remote).",
+  "pub_date": "2026-11-12T04:55:49Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.1/SnowCut_0.1.1_arm64.apk",
-      "signature": "untrusted comment: signature from the Tawny release key\nRUTURFpf4z8Aj8ScSipLrJQZ0RX3dOYxhhSD9q1xQ7NMqyMqODZucXKHNKrsUIcOsUDNGT431xoMhqjOZ7ub9JT/nTpyDAAZ9Q0=\ntrusted comment: timestamp:1794431200\tfile:SnowCut_0.1.1_arm64.apk\thashed\njHUlB3NoZhzgmqH4PIFpuJg83Nuc5mLt67MXDbVLMZVjIVwGM3EuEcHAaC+rIOLZf/Zb+NLZonc5eb39vR+MAA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.2/SnowCut_0.1.2_arm64.apk",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Ajw8zZ9aHG+ZI5278NOYeTMWD5WYt9rvtZD+AOgIR4I6cHdTivjRjSIVOeSxpcghLBGjYtK/n70q07cF2climqQk=\ntrusted comment: timestamp:1794459349\tfile:SnowCut_0.1.2_arm64.apk\thashed\nieJd3Os8Cw9iacPeiYcxsfau0kHVC8GcWi/dmi/N1up39rQw2G44KSYHDwzmnDLoe+LVR7iOShV/OlIqnjACDg==\n"
+    },
+    "windows-x86_64-nsis": {
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.2/SnowCut_0.1.2_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj7Nt1mm9rGz6TbfacsFsdbBbDoKz7R/LstAdFzI9I2KffIS9SwP+TPKfh4y9pnNtY4gTcmdfhYzVTjMPmdJSDwc=\ntrusted comment: timestamp:1794459349\tfile:SnowCut_0.1.2_x64-setup.zip\thashed\n4TVZadT013cdBy4Y2dpzFAbtOqHTx80NDOkFkouqrhg575MdZWY1GZ1ikdat8RX4asTTO+c7tiEXJtfxfwOKCg==\n"
     }
   }
 }
