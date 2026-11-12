@@ -1,11 +1,11 @@
 {
-  "version": "0.1.1",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play. Later dev builds install themselves from here.\n\nBackend: none. The app reads only the public catalog (https://catalog.g3tech.net); detection runs on the phone.\n\nAlso attached: `ad-sentinel-googletv-0.1.1.apk`, the Google TV overlay app (sideload it; it does not update itself).\n\nCommits since the last dev build (7af8ecf):\n- e20f90c feat(app): in-app updater for sideloaded dev builds\n- 627300c chore(release): ad-sentinel 0.1.1",
-  "pub_date": "2026-11-11T20:51:34Z",
+  "version": "0.1.2",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nNo backend: the app reads only the public catalog (https://catalog.g3tech.net). Also attached: the Google TV overlay app (sideload it; it does not update itself).\n\nChanges since the last release:\n\n- chore(release): ad-sentinel 0.1.2 (861d0d8)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)\n- g3-ui: an iOS toolbar segment pill no longer cuts its longest label on a phone, and an expanded AdaptiveNav rail opens to 15rem again (g3techhq/g3-ui@ebcdb7a)",
+  "pub_date": "2026-11-12T22:59:44Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.1/ad-sentinel-0.1.1.apk",
-      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zb0NQ9jlKqFRnS2skOa+w2rWcno5uuj7E61lGuGnIBDKGaAZiVUbJilIx/uka8qnPgo4uMC6AdqENLIRYpJ8Zg4=\ntrusted comment: timestamp:1794430294\tfile:ad-sentinel-0.1.1.apk\thashed\nTk4v1Wpan/y9RItvH4Mx7UUutmCJAbsKOjeeYqW0Z0X1rcvAnRBslMznYqVDTPBQILJlHhkbxvm7sMKa8aWGDg==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.2/ad-sentinel-0.1.2.apk",
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+za5dqVehb6I+N2uuuzvxnpqIsSa5lf8TtmBAuWCim69RK4DA0H1d8xlEbmtdS7f8GFumkd2jNaQJWwvAr7nW4gk=\ntrusted comment: timestamp:1794524384\tfile:ad-sentinel-0.1.2.apk\thashed\nOd88LL8Yer0YqThtgDrQop0t4cJF6RzbLxnf4o+oCfTMNqs0yphAfXvWBWNAoKwLq+HQVY/h6wSf3Af2vKTMDA==\n"
     }
   }
 }
