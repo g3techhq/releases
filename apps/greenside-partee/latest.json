@@ -1,11 +1,11 @@
 {
-  "version": "0.1.1",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: https://staging.greensidepartee.com (SERVER_URL and APP_LINK_ORIGIN).\n\nSince the 2026-11-11 dev build (21afea0):\n- feat(updater): sideloaded Android builds check for, download and install their own updates\n- chore(release): greenside-partee 0.1.1",
-  "pub_date": "2026-11-11T21:14:32Z",
+  "version": "0.1.2",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging.greensidepartee.com.\n\nChanges since the last release:\n\n- chore(release): greenside-partee 0.1.2 (1892d51)\n- docs(mobile): debug APKs are signed with the local debug keystore (07a645b)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)",
+  "pub_date": "2026-11-12T09:20:22Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.1/greenside-partee-0.1.1.apk",
-      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4Dp1L0WkrzQHGC/23BlSlIWBwXJGTps82/raxRjU0uMamwJdw6uJ+q6OYBz+EkqnES10yiFv67VpI1AbmULQ17Qw=\ntrusted comment: timestamp:1794431672\tfile:greenside-partee-0.1.1.apk\thashed\nTEw66u7bQ/s5Iw4jMECWgzvI5qxSMZ7p6qak5QdhUYIA5jaZAJa9HYkW+aeGI3I6ZFFzVuhVVqr5X7U9k8jPBQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.2/greenside-partee-0.1.2.apk",
+      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DnZZzUiGLS/ZBPUpHnf1YmcFjQQjNE/dFQC6ua8cUPXEBgcLWGLwQmmP5qiQenIdrgOdwQ9DG9z4bUmBd2whLQw=\ntrusted comment: timestamp:1794475222\tfile:greenside-partee-0.1.2.apk\thashed\n+brTgH4Idl9sW2+m+7FQBHxXEti27JUZICOybnpgRafVg09KkY0JqTtcWLOROH7eX/vy/A2IUVCy/RoUsElvDw==\n"
     }
   }
 }
