@@ -1,15 +1,15 @@
 {
-  "version": "0.1.2",
-  "notes": "Tawny 0.1.2, a dev build. The Android APK is debug-signed, for sideloading: it installs over other debug and adb-installed builds of Tawny, not over a release-keystore build.\n\nThe release key changed in 0.1.2. Installs from before 0.1.2 trust the old key and will not take this update, so install this one by hand once (the APK on Android, the -setup.exe on Windows); later releases then arrive in the app.\n\nChanges since the 0.1.0 dev build (b05df42):\n- chore(release): tawny 0.1.2\n- feat(updates)!: sign releases with a new key\n- build(deps): lock the g3 crates the updater and device backend need\n- fix(ui): confirm a follow once the server has it, and say errors plainly\n- fix(share): copy the link where there is no share sheet\n- fix(feed): lay the feed out as one grid and give scroll memory sole ownership\n- feat(shell): follow mouse Back and Forward buttons through the router\n- fix(player): renew native playback through the app and retry video details\n- feat(device-backend): keep the library on the device and move it to a server\n- feat(desktop): give the Windows app its own icon and a window-wide fullscreen",
-  "pub_date": "2026-11-11T21:24:22Z",
+  "version": "0.1.3",
+  "notes": "Tawny 0.1.3, a dev build. The Android APK is debug-signed, for sideloading: it installs over other debug and adb-installed builds of Tawny, not over a release-keystore build.\n\nTawny's releases now live in this repository, Gateway3B/tawny. From 0.1.3 the app checks https://github.com/Gateway3B/tawny/releases/latest/download/latest.json for updates; 0.1.2 installs find this release through g3techhq/releases and move over by updating.\n\nChanges since 0.1.2 (5b17a9a):\n- feat(updates)!: publish releases to Gateway3B/tawny\n- chore(release): tawny 0.1.3",
+  "pub_date": "2026-11-12T05:35:53Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tawny-v0.1.2/Tawny_0.1.2.apk",
-      "signature": "untrusted comment: signature from the Tawny release key\nRURzkViF1kIZmtK6QLcUdUCMdiyAvQKrtzKPuJeivcO0gbpC/SkE1UIbpqwBTD/Ib/BpZm1ReIdtSg7IRV6aZwGGLJLzCgQ6NgA=\ntrusted comment: timestamp:1794432262\tfile:Tawny_0.1.2.apk\thashed\nK5yTEympH5ETzf95PlO8YEeaYRSnEpgjyxrtCVVrcNMgmC9oma+Kb+XMS0CSHqzkWzuiV+ZCrFCW731pEW3VAg==\n"
+      "url": "https://github.com/Gateway3B/tawny/releases/download/v0.1.3/Tawny_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key 9A1942D685589173\nRURzkViF1kIZmqbL2dcA3RoHIPCbUkQ6nhgQVcLm2vscdGD+F6O0guXT6NPqFIgi5KR+ZCRTkP+NtyPxg1Q6nQ2B4G/ADDeUFAo=\ntrusted comment: timestamp:1794461753\tfile:Tawny_0.1.3.apk\thashed\nx4/qVdNGwsqTq84SsWXnkSDHO8Jw109KeL6kI43Rt03g4UkZ9rgJg/d8yLJKat6YjmGn8ZB5kSrfFMnYX3oHCg==\n"
     },
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tawny-v0.1.2/Tawny_0.1.2_x64-setup.zip",
-      "signature": "untrusted comment: signature from the Tawny release key\nRURzkViF1kIZmt3rIE7XJB5wJM9m3UJIfHGj6cmzd2j1Cf0GsGHOYocfBaDbekaq/9J5qL5qcjSypER7TSNeh8ykMKgTxQmuNQY=\ntrusted comment: timestamp:1794432262\tfile:Tawny_0.1.2_x64-setup.zip\thashed\nbMwTCXc+xRN/dsd8OKiAym/18DIBIdkyt5rFoEhAk/zpEainUf0VEt2+KYUjN9Ew59uLNtyoJ85dI3J2pysTCg==\n"
+      "url": "https://github.com/Gateway3B/tawny/releases/download/v0.1.3/Tawny_0.1.3_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 9A1942D685589173\nRURzkViF1kIZmq1yts0ioY8NRdxrBglk2rdNgtCr4Xn9uPkONkKIdpTGb6jCLAPn8IZPkmQl1PcPtmnrcbL4c16jAwcZuAeBRw0=\ntrusted comment: timestamp:1794461753\tfile:Tawny_0.1.3_x64-setup.zip\thashed\n0ewqbTm+jefjwrsEDBADvXnt8vWw/kNxa526EY4Nk7uRvVZFvzZQ2TidxlC45gQbnUgM7kqVFWafEk0hdTwKCw==\n"
     }
   }
 }
