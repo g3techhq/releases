@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3",
-  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging-swiftcircuits.g3tech.net (catalog https://catalog.g3tech.net, channel development)\n\nChanges since the last release (96d05cd):\n\n- chore(release): bump the solver tool's lock entry to 0.1.3 (3942e4b)\n- chore(release): swift-circuits 0.1.3 (5a53805)\n- build(deps): restore a lockfile that resolves without local overrides (d1d78f2)\n- refactor(about): use g3-brand's shared About and update dialogs (4c5b808)\n- feat(payments): move purchases onto the shared g3-payments crate (74fd66e)\n- refactor(game): build the first page's head with g3-ui's NativeHead (b3271b1)",
-  "pub_date": "2026-11-14T16:16:04Z",
+  "version": "0.1.4",
+  "notes": "Development build of Swift Circuits for sideloading (debug-signed, not a store build). It uses staging: backend https://staging-swiftcircuits.g3tech.net, catalog https://staging-catalog.g3tech.net, payments https://staging-pay.g3tech.net, and updates from the development feed. About > Build information shows the build's environment, channel, distribution and source commit.\n\nChanges since 0.1.3:\n\n- chore(release): swift-circuits 0.1.4 (9c6723f)\n- build: pin g3-brand 3c9d7f6 (5f5aa8d)\n- feat: profiled development builds; sideload Android uses hosted checkout (7d7e961)\n- feat(game): mirrors are always fixed (afe289e)\n- chore(release): bump the solver tool's lock entry to 0.1.3 (3942e4b)",
+  "pub_date": "2026-11-14T21:26:37Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.3/SwiftCircuits_0.1.3.apk",
-      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbym2TVaS+B9p5ucx/nV07ngKrnqMKSpqAr2Oj6NK6EtV2GlnjY9Qs9P5ho4uP0302qfwVHVsMZwqPN0adQewitkgU=\ntrusted comment: timestamp:1794672964\tfile:SwiftCircuits_0.1.3.apk\thashed\nH5KpnqSdU8SWRUnbUvvC1ym70fd+KY/ETPfBzWol+JAnmXiL9dghJobjPvPNIkUwH60rBHwIz7luwXyz5942Aw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.4/swift-circuits-0.1.4.apk",
+      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbymyAmKBSGXWt/hoTV4+sRgdPtlMPoKDk7egFC/vur/Fz65CH1wh8l66CGM93SJWoq1De+hgNNHLtxGx/VU/dipA4=\ntrusted comment: timestamp:1794691597\tfile:swift-circuits-0.1.4.apk\thashed\n4nlOpYyHkcHVOMgNEniTigklPS1YOQPI669KllDUaWH0spa6Nedu+dPVWLenIg3JQh25DUDn5dVkeL6NfIn1Dg==\n"
     }
   }
 }
