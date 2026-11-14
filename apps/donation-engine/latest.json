@@ -1,11 +1,11 @@
 {
-  "version": "0.1.2",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging-donationengine.g3tech.net.\n\nChanges since the last release:\n\n- chore(release): donation-engine 0.1.2 (5e56688)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)\n- g3-ui (uncommitted at build time, committed in this run): an iOS toolbar segment pill no longer cuts its longest label on a phone, and an expanded AdaptiveNav rail opens to 15rem again",
-  "pub_date": "2026-11-12T22:39:54Z",
+  "version": "0.1.3",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging-donationengine.g3tech.net\n\nChanges since the last release (5e56688):\n\n- build(deps): lock g3-auth with account email, and g3-brand's shared About (d8cf5f0)\n- feat(auth): move account email onto g3-auth, and confirm new emails (c5b359a)\n- refactor(about): use g3-brand's shared About and update dialogs (5e27e2f)\n- chore(release): donation-engine 0.1.3 (cfd51aa)\n- build(deps): lock g3-ui with NativeHead and g3-brand's update dialog (532d768)\n- fix(mobile): style the first paint with g3-ui's NativeHead (e22b655)",
+  "pub_date": "2026-11-14T10:09:31Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.2/donation-engine-0.1.2.apk",
-      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2mj+E0Rwy/5Mo15RleYHVKXHieZVqIEP1D4TOrQoN3HjUXUUDNPdQaFgmJ1swVYxD6j9wr/x9/gsEMiclLZtuAQ=\ntrusted comment: timestamp:1794523194\tfile:donation-engine-0.1.2.apk\thashed\nKs6VQ1n7Ov0X4WbQHjTym3IbDPheDNba0m6Anxp/uxhnzCrPIkkaY7WSiGqKq/ccFX40mnjhSb6AlvEIln6UCw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.3/DonationEngine_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2svo2VQuD1KhvOoan5PSodBIXCpMhPsu+6bdgfypenGwM5YOUW3Oey+FiDbYSr8klW/hdRps43HvctOFia7BeQA=\ntrusted comment: timestamp:1794650971\tfile:DonationEngine_0.1.3.apk\thashed\nvUwn09npHLJHWlzBumuqI73anhtnrVj7oJqur/xzOh0/iqX50YFfjZ5Oe+us5ywTGOJbkCPkVvEROhKNSzykAg==\n"
     }
   }
 }
