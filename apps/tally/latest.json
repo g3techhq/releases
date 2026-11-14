@@ -1,0 +1,11 @@
+{
+  "version": "0.1.1",
+  "notes": "First dev build of Tally for Windows: the NSIS installer, with the in-app updater (it checks apps/tally/latest.json here and installs signed updates).\n\nBackend: none. Tally keeps its books in an encrypted local file; bank sync talks to Plaid directly from the app.\n\nRecent changes:\n\n- chore(release): tally 0.1.1 (d30dc98)\n- feat(app): investments, budgets, loans, transfers and statement imports on screen (ba1c0a3)\n- feat(plaid): brokerage trades and holdings from Plaid (b8fccd6)\n- feat(import): PDF statements, and trades from CSV, OFX and QIF (bfd2b5c)\n- feat(store): version the books' schema and SurrealDB, and keep pending trades (ab1d39e)\n- feat(core): trades from statements, transfer matching and recurring entries (54ed4ec)\n- feat(about): open catalog links in the browser; research on selling (20ae2d8)\n- feat: g3-brand About and in-app updates (65ac052)\n- feat: match transfers between the owner's own accounts (cd2e234)\n- feat: Review files every download, like Quicken's Accept All (6028121)\n- feat: type dates as well as pick them (350ac70)\n- feat: review one account at a time, sync on open, skip copies, account trash (7b08c1e)",
+  "pub_date": "2026-11-14T15:06:48Z",
+  "platforms": {
+    "windows-x86_64-nsis": {
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.1/Tally_0.1.1_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I3vzEfyBmQ02MQBlf5EGjis9xhK1ocnQWfXfgANrfXTDwm3vdJCbOvN38OxlTQ8NXDWnFr1vwLhqqKQT/7kerwg=\ntrusted comment: timestamp:1794668808\tfile:Tally_0.1.1_x64-setup.zip\thashed\n64KETZuPdguPgeLzS6fk9gLvD7FFMOOHfWnGXRl84rf32y43ytu4ziBGKwqN4BX9n/QaehPJZpIwtrhZHLfeBQ==\n"
+    }
+  }
+}
