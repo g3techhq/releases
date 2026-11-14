@@ -1,11 +1,11 @@
 {
-  "version": "0.1.2",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging-mediamancer.g3tech.net.\n\nChanges since the last release:\n\n- chore(release): media-mancer 0.1.2 (64dfd00)\n- fix(updater): commit the layout utilities the update prompt uses (68d8914)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)",
-  "pub_date": "2026-11-12T22:28:42Z",
+  "version": "0.1.3",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging-mediamancer.g3tech.net\n\nChanges since the last release (64dfd00):\n\n- chore(release): media-mancer 0.1.3 (f293708)\n- build(deps): lock g3-auth with account email, and g3-brand's shared About (bdacf32)\n- feat(auth): confirm emails and reset passwords through g3-auth (a85f5b7)\n- refactor(lists): drop View as feed and Mark all as experienced from a list (939d0f7)\n- fix(native): remember scroll positions per route in the apps (109ec7a)\n- fix(publish-dev): refuse an APK with no arm64 library (ce98c03)\n- refactor(about): use g3-brand's shared About and update dialogs (8ff2885)\n- refactor(native): build the first page's head with g3-ui's NativeHead (fa7730f)",
+  "pub_date": "2026-11-14T10:07:12Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.2/media-mancer-0.1.2.apk",
-      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSFxZbx5zpc+Im+VZMbXYBOGw3m7C8CInFYfhnHqOiuolN4VHexiKnrkSBlmm60vvzA18zAyJMkA8+kp1uQdfYQk=\ntrusted comment: timestamp:1794522522\tfile:media-mancer-0.1.2.apk\thashed\n6EKYh//dwdDPt4u/F7EAyvGTHYPNks/WRvCPS7DkLZDa1uoZokSLGl28c/TKAzkTZnjA5pC5i0qOdhWlCtrYBw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.3/MediaMancer_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSEWI4DvokryWXHsCFTddDRCyYLsJhu4tk+Kt37hbQjYnEY3JDXtq0juJk4QAjxzE8MEYehFztpHhFg2naRly7Ao=\ntrusted comment: timestamp:1794650832\tfile:MediaMancer_0.1.3.apk\thashed\nEjBQVcOgApv+1fsj/4EvLQfWAyYyTqefPLzTcor74cd6hWMQ5ImWIZNJJCoSHDd439Id867Vg5mv3O/x/XvjDw==\n"
     }
   }
 }
