@@ -1,11 +1,11 @@
 {
-  "version": "0.1.2",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nBackend: staging, https://staging.greensidepartee.com.\n\nChanges since the last release:\n\n- chore(release): greenside-partee 0.1.2 (1892d51)\n- docs(mobile): debug APKs are signed with the local debug keystore (07a645b)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)",
-  "pub_date": "2026-11-12T09:20:22Z",
+  "version": "0.1.3",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging.greensidepartee.com\n\nChanges since the last release (1892d51):\n\n- build(deps): lock g3-auth with account email, and g3-brand's shared About (9dad9b6)\n- feat(auth): confirm emails and reset passwords through g3-auth (0eab5c8)\n- refactor(about): use g3-brand's shared About and update dialogs (4f6739e)\n- chore(release): greenside-partee 0.1.3 (abf72c8)\n- build(deps): lock g3-ui with NativeHead and g3-brand's update dialog (ed7a36a)\n- fix(mobile): style the first paint with g3-ui's NativeHead (861b80a)",
+  "pub_date": "2026-11-14T10:06:53Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.2/greenside-partee-0.1.2.apk",
-      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DnZZzUiGLS/ZBPUpHnf1YmcFjQQjNE/dFQC6ua8cUPXEBgcLWGLwQmmP5qiQenIdrgOdwQ9DG9z4bUmBd2whLQw=\ntrusted comment: timestamp:1794475222\tfile:greenside-partee-0.1.2.apk\thashed\n+brTgH4Idl9sW2+m+7FQBHxXEti27JUZICOybnpgRafVg09KkY0JqTtcWLOROH7eX/vy/A2IUVCy/RoUsElvDw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.3/GreensidePartee_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DmrBD+A3awv67QTlr+ExoKBKyy1UXuaS7KLx2C3gF4xmT7GaMLKwIUH1qEeIcY0vtwSVYifYlqkKip6AhjcEoQs=\ntrusted comment: timestamp:1794650813\tfile:GreensidePartee_0.1.3.apk\thashed\nf/FUhGyWKfZOKXH9hFaWPYrRFlZ0dO2fRJCR+8+GG2F3mifHgry95t3STBSgqgPA9uVOyO3h3GZh9AOwn0dCDQ==\n"
     }
   }
 }
