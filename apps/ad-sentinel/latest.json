@@ -1,11 +1,11 @@
 {
-  "version": "0.1.2",
-  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nNo backend: the app reads only the public catalog (https://catalog.g3tech.net). Also attached: the Google TV overlay app (sideload it; it does not update itself).\n\nChanges since the last release:\n\n- chore(release): ad-sentinel 0.1.2 (861d0d8)\n- g3-ui: frosted surfaces (the translucent Fab, the iOS bottom bar) blur in Android web views again, and NavBar can float as a pill (g3techhq/g3-ui@71d6aab)\n- g3-ui: an iOS toolbar segment pill no longer cuts its longest label on a phone, and an expanded AdaptiveNav rail opens to 15rem again (g3techhq/g3-ui@ebcdb7a)",
-  "pub_date": "2026-11-12T22:59:44Z",
+  "version": "0.1.3",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: none (on-device only)\n\nThe Google TV APK is attached; it has no updater and installs by hand.\n\nChanges since the last release (861d0d8):\n\n- chore(release): ad-sentinel 0.1.3 (a7dc00b)\n- build(deps): restore a lockfile that resolves without local overrides (a8122bd)\n- refactor(app): use g3-brand's shared About and update dialogs (c654486)\n- docs: cloud checks that confirm or veto (c776385)\n- feat(app): Clef-flash confirms or vetoes mutes (e5c0063)\n- feat(testbed): replay cloud checks from collected answers (bba6a9e)\n- feat(core): cloud checks confirm or veto mutes (906285d)\n- docs: the picture model and the AI evaluation (2f0d322)\n- feat(app): on-device picture model (b816fd9)\n- feat(testbed): offline AI evaluation in Rust (a51d696)\n- feat(vision): the picture model on rten (d187ef2)\n- feat(core): picture-model evidence in the break machine (0bce146)\n- fix(app): build the first page's head with g3-ui's NativeHead (6854195)\n- fix(app): mount the update prompts after the page (bbbc535)",
+  "pub_date": "2026-11-14T10:09:42Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.2/ad-sentinel-0.1.2.apk",
-      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+za5dqVehb6I+N2uuuzvxnpqIsSa5lf8TtmBAuWCim69RK4DA0H1d8xlEbmtdS7f8GFumkd2jNaQJWwvAr7nW4gk=\ntrusted comment: timestamp:1794524384\tfile:ad-sentinel-0.1.2.apk\thashed\nOd88LL8Yer0YqThtgDrQop0t4cJF6RzbLxnf4o+oCfTMNqs0yphAfXvWBWNAoKwLq+HQVY/h6wSf3Af2vKTMDA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.3/AdSentinel_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zQ0gD8JY86fZuTeGx2oSWrz5zI73Q7f/pzd6NKUHSEfvBuyxQ0sXzZYj9D6is83TOjtRXEmrZv45gWJAIDDXLAE=\ntrusted comment: timestamp:1794650982\tfile:AdSentinel_0.1.3.apk\thashed\n14nJvshp8BdnYPwuaGU/pKlf48wy7I27Mm/3OyJS+wJcxsJMaSU9PXakPNV4OQn67khlFydc4rMQukQDw01nAw==\n"
     }
   }
 }
