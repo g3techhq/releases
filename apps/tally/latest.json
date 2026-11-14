@@ -1,11 +1,11 @@
 {
-  "version": "0.1.1",
-  "notes": "First dev build of Tally for Windows: the NSIS installer, with the in-app updater (it checks apps/tally/latest.json here and installs signed updates).\n\nBackend: none. Tally keeps its books in an encrypted local file; bank sync talks to Plaid directly from the app.\n\nRecent changes:\n\n- chore(release): tally 0.1.1 (d30dc98)\n- feat(app): investments, budgets, loans, transfers and statement imports on screen (ba1c0a3)\n- feat(plaid): brokerage trades and holdings from Plaid (b8fccd6)\n- feat(import): PDF statements, and trades from CSV, OFX and QIF (bfd2b5c)\n- feat(store): version the books' schema and SurrealDB, and keep pending trades (ab1d39e)\n- feat(core): trades from statements, transfer matching and recurring entries (54ed4ec)\n- feat(about): open catalog links in the browser; research on selling (20ae2d8)\n- feat: g3-brand About and in-app updates (65ac052)\n- feat: match transfers between the owner's own accounts (cd2e234)\n- feat: Review files every download, like Quicken's Accept All (6028121)\n- feat: type dates as well as pick them (350ac70)\n- feat: review one account at a time, sync on open, skip copies, account trash (7b08c1e)",
-  "pub_date": "2026-11-14T15:06:48Z",
+  "version": "0.1.2",
+  "notes": "Dev build of Tally for Windows, with the 14-day trial.\n\nAfter 14 days without a license your books open read-only: you can still view them, run reports and export. Buy a license from About (or the banner) and enter the key there to keep editing. Licenses come from the staging license server (staging-pay.g3tech.net, Stripe test mode).\n\nChanges since 0.1.1:\n\n- chore(release): tally 0.1.2 (5220e99)\n- feat(app): a 14-day trial, then a license key or read-only books (638a8d7)\n- feat(store): a read-only switch that refuses saves but keeps every read (f97e912)\n- feat(app): show what is owed on cards and loans in red (0d1730a)\n- build: patch the Dioxus fork and g3 crates from git (dd1eaad)",
+  "pub_date": "2026-11-14T17:45:02Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.1/Tally_0.1.1_x64-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I3vzEfyBmQ02MQBlf5EGjis9xhK1ocnQWfXfgANrfXTDwm3vdJCbOvN38OxlTQ8NXDWnFr1vwLhqqKQT/7kerwg=\ntrusted comment: timestamp:1794668808\tfile:Tally_0.1.1_x64-setup.zip\thashed\n64KETZuPdguPgeLzS6fk9gLvD7FFMOOHfWnGXRl84rf32y43ytu4ziBGKwqN4BX9n/QaehPJZpIwtrhZHLfeBQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.2/Tally_0.1.2_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I/rtEoDFYzwBRLBZFq8rbC4i+UqzYkO/+YD0d7DweLDCZC/cI9jeyaqrlbUkbeB2X5sBsjt39zU0Fpz6rBFLZA0=\ntrusted comment: timestamp:1794678302\tfile:Tally_0.1.2_x64-setup.zip\thashed\nGtaooTlFx9ABc3Nd13TqD0UKt3rcNYIRHe54PfKUFEiMTx+mlcCEk9rr6VMR5PSKJzXIdxcA+SLcCiUA2wnJDQ==\n"
     }
   }
 }
