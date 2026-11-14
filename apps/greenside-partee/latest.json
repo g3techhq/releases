@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3",
-  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging.greensidepartee.com\n\nChanges since the last release (1892d51):\n\n- build(deps): lock g3-auth with account email, and g3-brand's shared About (9dad9b6)\n- feat(auth): confirm emails and reset passwords through g3-auth (0eab5c8)\n- refactor(about): use g3-brand's shared About and update dialogs (4f6739e)\n- chore(release): greenside-partee 0.1.3 (abf72c8)\n- build(deps): lock g3-ui with NativeHead and g3-brand's update dialog (ed7a36a)\n- fix(mobile): style the first paint with g3-ui's NativeHead (861b80a)",
-  "pub_date": "2026-11-14T10:06:53Z",
+  "version": "0.1.4",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging.greensidepartee.com\n\nChanges since the last release (9dad9b6):\n\n- chore(release): greenside-partee 0.1.4 (b48a5f4)\n- build(deps): lock g3-payments and drop async-stripe and jsonwebtoken 9 (f12aaab)\n- refactor(billing): take Stripe and the App Store from g3-payments (bb8b494)",
+  "pub_date": "2026-11-14T17:39:23Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.3/GreensidePartee_0.1.3.apk",
-      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DmrBD+A3awv67QTlr+ExoKBKyy1UXuaS7KLx2C3gF4xmT7GaMLKwIUH1qEeIcY0vtwSVYifYlqkKip6AhjcEoQs=\ntrusted comment: timestamp:1794650813\tfile:GreensidePartee_0.1.3.apk\thashed\nf/FUhGyWKfZOKXH9hFaWPYrRFlZ0dO2fRJCR+8+GG2F3mifHgry95t3STBSgqgPA9uVOyO3h3GZh9AOwn0dCDQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.4/GreensidePartee_0.1.4.apk",
+      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DlsScn9OYER/dOj6HL67igQeTLz+OVPjT5sRAR5ygs61rHHJEaRWjxuyn2HMD/1T9zJ3yUizeqEel7YxOYmxNgg=\ntrusted comment: timestamp:1794677963\tfile:GreensidePartee_0.1.4.apk\thashed\n+MBprNg/LdcyhgAqHkkG+19oG/uukl4m1PLE2W/tkJwMnV/yjS0SvEgr+novlrWnzlGjx8+rvNsukX4dZ3SRBA==\n"
     }
   }
 }
