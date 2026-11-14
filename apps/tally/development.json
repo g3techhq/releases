@@ -1,0 +1,11 @@
+{
+  "version": "0.1.2",
+  "notes": "Dev build of Tally for Windows, with the 14-day trial.\n\nAfter 14 days without a license your books open read-only: you can still view them, run reports and export. Buy a license from About (or the banner) and enter the key there to keep editing. Licenses come from the staging license server (staging-pay.g3tech.net, Stripe test mode).\n\nChanges since 0.1.1:\n\n- chore(release): tally 0.1.2 (5220e99)\n- feat(app): a 14-day trial, then a license key or read-only books (638a8d7)\n- feat(store): a read-only switch that refuses saves but keeps every read (f97e912)\n- feat(app): show what is owed on cards and loans in red (0d1730a)\n- build: patch the Dioxus fork and g3 crates from git (dd1eaad)",
+  "pub_date": "2026-11-14T17:45:02Z",
+  "platforms": {
+    "windows-x86_64-nsis": {
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.2/Tally_0.1.2_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I/rtEoDFYzwBRLBZFq8rbC4i+UqzYkO/+YD0d7DweLDCZC/cI9jeyaqrlbUkbeB2X5sBsjt39zU0Fpz6rBFLZA0=\ntrusted comment: timestamp:1794678302\tfile:Tally_0.1.2_x64-setup.zip\thashed\nGtaooTlFx9ABc3Nd13TqD0UKt3rcNYIRHe54PfKUFEiMTx+mlcCEk9rr6VMR5PSKJzXIdxcA+SLcCiUA2wnJDQ==\n"
+    }
+  }
+}

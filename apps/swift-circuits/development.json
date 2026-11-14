@@ -1,0 +1,11 @@
+{
+  "version": "0.1.3",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging-swiftcircuits.g3tech.net (catalog https://catalog.g3tech.net, channel development)\n\nChanges since the last release (96d05cd):\n\n- chore(release): bump the solver tool's lock entry to 0.1.3 (3942e4b)\n- chore(release): swift-circuits 0.1.3 (5a53805)\n- build(deps): restore a lockfile that resolves without local overrides (d1d78f2)\n- refactor(about): use g3-brand's shared About and update dialogs (4c5b808)\n- feat(payments): move purchases onto the shared g3-payments crate (74fd66e)\n- refactor(game): build the first page's head with g3-ui's NativeHead (b3271b1)",
+  "pub_date": "2026-11-14T16:16:04Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.3/SwiftCircuits_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbym2TVaS+B9p5ucx/nV07ngKrnqMKSpqAr2Oj6NK6EtV2GlnjY9Qs9P5ho4uP0302qfwVHVsMZwqPN0adQewitkgU=\ntrusted comment: timestamp:1794672964\tfile:SwiftCircuits_0.1.3.apk\thashed\nH5KpnqSdU8SWRUnbUvvC1ym70fd+KY/ETPfBzWol+JAnmXiL9dghJobjPvPNIkUwH60rBHwIz7luwXyz5942Aw==\n"
+    }
+  }
+}

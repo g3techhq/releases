@@ -1,0 +1,11 @@
+{
+  "version": "0.1.4",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: none (on-device only); licenses from https://staging-pay.g3tech.net (Stripe test mode)\n\nNew: a 14-day trial. After it, watching needs a license key (Buy Ad Sentinel / Enter license key in Settings > About). The Google TV APK is attached; it has no updater and installs by hand.\n\nChanges since the last release (a7dc00b):\n\n- chore(release): ad-sentinel 0.1.4 (fbda97e)\n- build(deps): lock g3-payments with the Android TLS fix (f03d092)\n- build(deps): lock g3-payments for the trial and license (91f5564)\n- feat(app): 14-day trial and license-key unlock for sideloaded builds (e8fe989)",
+  "pub_date": "2026-11-14T17:54:40Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.4/AdSentinel_0.1.4.apk",
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zciLUSbxsoy7l200W3+Rl0O/hlg4goLaC1QDEA/p2sjS7M+XC4CHfr4OsGn0fTHgZ4BPqGvTygpykuHy0XzAmQ0=\ntrusted comment: timestamp:1794678880\tfile:AdSentinel_0.1.4.apk\thashed\n7jQNej0BuOSRNwpENaaS/JzuIZHlyGbiBWKGLEuJIbzfs9WKXjM7gewMJMHgnmJ1sIyZFnDzKaeC2YEKM+XPDA==\n"
+    }
+  }
+}

@@ -17,15 +17,37 @@ platform and channel. Use `store.json` only for an app without g3-brand, or
 a store build of an app that otherwise publishes here. Today this repository
 serves the g3 apps' sideloaded dev builds (Ad Sentinel, Donation Engine,
 Greenside Partee, Media Mancer, Swift Circuits on Android; Snow Cut on Android
-and Windows).
+and Windows; Tally on Windows).
 
 The app's source can live anywhere, private repositories included: only the
 release files are published here.
 
+## Direct release channels
+
+New profiled builds read `apps/<app>/development.json`, `beta.json` or
+`production.json`. The daily publisher explicitly selects **development** and
+marks its GitHub releases as prereleases. It updates `development.json` and the
+legacy `latest.json` together for installed dev builds. Beta and production
+never update the legacy development feed. Publish the prepared development
+feeds before distributing clients that depend on them.
+
+Both publishers refuse version regressions and releases that drop an existing
+platform. Publish all targets together, or introduce separate target feeds
+before splitting their release schedules. Production APKs must pass Android's
+signature verifier and must not carry the Android Debug certificate. These
+checks do not establish Play Console registration or payment-product readiness.
+
+`node scripts/seed-development.mjs` prepares missing development feeds from the
+legacy feeds without publishing them; `--live` reads the currently published
+legacy feeds. Review and commit the prepared files with the channel tooling.
+
 ## What is here
 
 ```
-apps/<app>/latest.json   What directly distributed builds check
+apps/<app>/development.json  New daily direct builds
+apps/<app>/beta.json         Direct beta builds, when published
+apps/<app>/production.json   Direct production builds, when published
+apps/<app>/latest.json       Legacy daily direct builds
 apps/<app>/store.json    What store builds check
 scripts/                 Signing files, and writing the two files above
 .github/workflows/

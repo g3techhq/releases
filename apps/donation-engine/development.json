@@ -1,0 +1,11 @@
+{
+  "version": "0.1.3",
+  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging-donationengine.g3tech.net\n\nChanges since the last release (5e56688):\n\n- build(deps): lock g3-auth with account email, and g3-brand's shared About (d8cf5f0)\n- feat(auth): move account email onto g3-auth, and confirm new emails (c5b359a)\n- refactor(about): use g3-brand's shared About and update dialogs (5e27e2f)\n- chore(release): donation-engine 0.1.3 (cfd51aa)\n- build(deps): lock g3-ui with NativeHead and g3-brand's update dialog (532d768)\n- fix(mobile): style the first paint with g3-ui's NativeHead (e22b655)",
+  "pub_date": "2026-11-14T10:09:31Z",
+  "platforms": {
+    "android": {
+      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.3/DonationEngine_0.1.3.apk",
+      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2svo2VQuD1KhvOoan5PSodBIXCpMhPsu+6bdgfypenGwM5YOUW3Oey+FiDbYSr8klW/hdRps43HvctOFia7BeQA=\ntrusted comment: timestamp:1794650971\tfile:DonationEngine_0.1.3.apk\thashed\nvUwn09npHLJHWlzBumuqI73anhtnrVj7oJqur/xzOh0/iqX50YFfjZ5Oe+us5ywTGOJbkCPkVvEROhKNSzykAg==\n"
+    }
+  }
+}

@@ -55,10 +55,10 @@ on:
         type: string
         default: ""
       channel:
-        description: Which release file to write, apps/<app>/<channel>.json
+        description: Direct release channel (development, beta or production)
         required: false
         type: string
-        default: latest
+        default: development
       notes:
         description: Release notes, for the release page and the app
         required: false
@@ -112,7 +112,7 @@ jobs:
         run: |
           set -euo pipefail
           [[ "$APP" =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "app must be lowercase letters, digits and hyphens: $APP" >&2; exit 1; }
-          [[ "$CHANNEL" =~ ^[a-z0-9][a-z0-9-]*$ ]] || { echo "channel must be lowercase letters, digits and hyphens: $CHANNEL" >&2; exit 1; }
+          [[ "$CHANNEL" =~ ^(development|beta|production)$ ]] || { echo "channel must be lowercase letters, digits and hyphens: $CHANNEL" >&2; exit 1; }
           [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+([-+][0-9A-Za-z.+-]+)?$ ]] || { echo "version is not semver: $VERSION" >&2; exit 1; }
           if [[ -n "${FILES//[[:space:]]/}" ]]; then
             : "${UPDATER_KEY:?Pass updater_key: files are signed with it}"
@@ -150,6 +150,9 @@ jobs:
           pattern: ${{ inputs.artifacts }}
           path: dist
           merge-multiple: true
+
+      - name: Validate the version, complete platform set and production APK identities
+        run: node releases/scripts/preflight-workflow.mjs
 
       - name: Sign the files
         if: inputs.files != ''
@@ -189,8 +192,10 @@ jobs:
             files+=("dist/$file")
           done <<< "$ATTACH"
           notes="${NOTES:-$APP $VERSION}"
+          prerelease=()
+          [[ "$CHANNEL" == production ]] || prerelease=(--prerelease)
           gh release create "$tag" --repo "$RELEASES" --target main --draft --latest=false \
-            --title "$APP $VERSION" --notes "$notes" "${files[@]}"
+            --title "$APP $VERSION" --notes "$notes" "${prerelease[@]}" "${files[@]}"
           gh release edit "$tag" --repo "$RELEASES" --draft=false --latest=false
 
       - name: Write the release file
@@ -221,6 +226,10 @@ jobs:
           cd releases
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ "$CHANNEL" == development ]]; then
+            cp "apps/$APP/development.json" "apps/$APP/latest.json"
+            git add "apps/$APP/latest.json"
+          fi
           git add "apps/$APP/$CHANNEL.json"
           # A rerun of the same release writes the same file.
           git diff --cached --quiet && exit 0

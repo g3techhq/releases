@@ -4,7 +4,7 @@
 //     --file <platform>=<path> [--file ...] [--attach <path> ...] [--notes <text or @file>] \
 //     [--source <repo@sha>] [--public-key <file or text>] [--name <App name>] \
 //     [--repo <owner/name>] [--manifest commit|asset] [--tag <tag>] \
-//     [--prerelease] [--dry-run]
+//     [--channel development|beta|production] [--prerelease] [--dry-run]
 //
 // It signs each file with the app's key, creates the release `<app>-v<version>`
 // of g3techhq/releases (or `--repo`) with `gh` as a draft, uploads the files,
@@ -28,6 +28,7 @@ import {
   mkdirSync,
   mkdtempSync,
   readFileSync,
+  readdirSync,
   rmSync,
   statSync,
   writeFileSync,
@@ -50,7 +51,7 @@ export const USAGE =
   "Usage: node scripts/publish-local.mjs --app <app> --version <x.y.z> --key <path to <app>-updater.key> " +
   "--file <platform>=<path> [--file ...] [--attach <path> ...] [--notes <text or @file>] " +
   "[--source <repo@sha>] [--public-key <file|text>] [--name <App name>] " +
-  "[--repo <owner/name>] [--manifest commit|asset] [--tag <tag>] [--prerelease] [--dry-run]";
+  "[--repo <owner/name>] [--manifest commit|asset] [--tag <tag>] [--channel development|beta|production] [--prerelease] [--dry-run]";
 export const MANIFEST_ASSET = `${CHANNEL}.json`;
 const MANIFEST_MODES = new Set(["commit", "asset"]);
 const REPO_NAME = /^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
@@ -73,6 +74,7 @@ const VALUE_OPTIONS = new Set([
   "repo",
   "manifest",
   "tag",
+  "channel",
 ]);
 const LIST_OPTIONS = new Set(["file", "attach"]);
 const FLAGS = new Set(["prerelease", "dry-run", "help"]);
@@ -220,6 +222,16 @@ export function planRelease(options, notesText) {
   if (options.tag !== undefined && !TAG.test(options.tag)) {
     throw new Error(`--tag may use letters, digits, dots, hyphens and underscores: ${options.tag}`);
   }
+  const channel = manifest === "asset" ? "latest" : (options.channel ?? (options.prerelease ? "development" : "production"));
+  if (manifest !== "asset" && !["development", "beta", "production"].includes(channel)) {
+    throw new Error("--channel must be development, beta or production");
+  }
+  if (channel === "production" && options.prerelease) throw new Error("Production cannot be a prerelease");
+  const manifestPath = `apps/${options.app}/${channel}.json`;
+  // Old installed dev builds still check latest.json. Only development mirrors
+  // it, atomically with development.json; production never writes that path.
+  const manifestPaths = manifest !== "asset" && channel === "development"
+    ? [manifestPath, `apps/${options.app}/latest.json`] : [manifestPath];
   const names = new Set();
   const asset = (path) => {
     const name = basename(path);
@@ -263,29 +275,42 @@ export function planRelease(options, notesText) {
     target,
     title: `${options.name ?? displayName(app)} ${version}`,
     baseUrl: downloadBase(repo, tag),
-    manifestPath: `apps/${app}/${CHANNEL}.json`,
+    channel,
+    manifestPath,
+    manifestPaths,
     manifestUrl:
       manifest === "asset"
         ? latestAssetUrl(repo)
-        : `https://raw.githubusercontent.com/${REPO}/main/apps/${app}/${CHANNEL}.json`,
-    commitMessage: `release(${app}): ${version} on ${CHANNEL}`,
+        : `https://raw.githubusercontent.com/${REPO}/main/${manifestPath}`,
+    commitMessage: `release(${app}): ${version} on ${channel}`,
     files,
     attach,
     notes,
     pageNotes,
-    prerelease: options.prerelease,
+    prerelease: manifest === "asset" ? options.prerelease : channel !== "production",
   };
 }
 
 /** Refuses a version that is not newer than the one apps already have. */
+export function newerRelease(left, right) {
+  if (!left) return right;
+  if (!right) return left;
+  return compareSemver(left.version, right.version) >= 0 ? left : right;
+}
+
 export function checkNewer(version, current) {
   if (current && compareSemver(version, current.version) <= 0) {
-    throw new Error(`${version} is not newer than ${current.version}, the current ${CHANNEL}.json`);
+    throw new Error(`${version} is not newer than ${current.version}, the current update feed`);
   }
 }
 
 /** latest.json for the release, from the files' signatures. */
 export function releaseManifest(plan, signatures, pubDate, existing) {
+  const targets = new Set(plan.files.map(file => file.platform));
+  const missing = Object.keys(existing?.platforms ?? {}).filter(platform => !targets.has(platform));
+  if (existing?.version !== plan.version && missing.length) {
+    throw new Error(`Release would drop existing platforms: ${missing.join(", ")}. Publish all targets or split their feeds first.`);
+  }
   return buildManifest({
     version: plan.version,
     notes: plan.notes,
@@ -381,8 +406,9 @@ export async function fetchRelease(url) {
 }
 
 export function pushManifest(root, plan) {
-  run("git", ["add", plan.manifestPath], { cwd: root });
-  run("git", ["commit", "--quiet", "-m", plan.commitMessage, "--", plan.manifestPath], {
+  const paths = plan.manifestPaths ?? [plan.manifestPath];
+  run("git", ["add", ...paths], { cwd: root });
+  run("git", ["commit", "--quiet", "-m", plan.commitMessage, "--", ...paths], {
     cwd: root,
   });
   for (let attempt = 1; attempt <= 5; attempt += 1) {
@@ -405,6 +431,23 @@ export function pushManifest(root, plan) {
   );
 }
 
+export function assertProductionCertificate(output) {
+  if (!/Signer #\d+ certificate SHA-256 digest: [a-f0-9]+/i.test(output)) throw new Error("APK signing identity was not verified");
+  if (/certificate DN:.*CN=Android Debug/i.test(output)) throw new Error("Debug-signed APKs cannot be published to a production feed");
+}
+
+export function verifyProductionApk(file) {
+  const sdk = process.env.ANDROID_HOME ?? process.env.ANDROID_SDK_ROOT ?? (process.env.LOCALAPPDATA ? join(process.env.LOCALAPPDATA, "Android/Sdk") : undefined);
+  if (!sdk) throw new Error("Production APK verification requires the Android SDK");
+  const tools = readdirSync(join(sdk, "build-tools")).filter(name => /^\d+\.\d+\.\d+$/.test(name)).sort(compareSemver).at(-1);
+  if (!tools) throw new Error("No Android APK signing verifier installed");
+  const javaHome = [process.env.JAVA_HOME, "C:/Program Files/Android/Android Studio/jbr", "C:/Program Files/Android/Android Studio1/jbr"].find(home => home && existsSync(join(home, "lib/jvm.cfg")));
+  const java = javaHome ? join(javaHome, process.platform === "win32" ? "bin/java.exe" : "bin/java") : "java";
+  const result = spawnSync(java, ["-jar", join(sdk, "build-tools", tools, "lib/apksigner.jar"), "verify", "--print-certs", file], {encoding:"utf8"});
+  if (result.status !== 0) throw new Error("Production APK platform-signature verification failed");
+  assertProductionCertificate(result.stdout);
+}
+
 async function main(argv) {
   const options = parseArgs(argv);
   if (options.help) {
@@ -417,6 +460,11 @@ async function main(argv) {
   const plan = planRelease(options, notesText);
   for (const { path } of [...plan.files, ...plan.attach]) {
     if (!existsSync(path) || !statSync(path).isFile()) throw new Error(`No file ${path}`);
+  }
+  if (!plan.prerelease) {
+    for (const file of [...plan.files, ...plan.attach]) {
+      if (file.path.toLowerCase().endsWith(".apk")) verifyProductionApk(file.path);
+    }
   }
   const key = parseSecret(readFileSync(options.key, "utf8"));
   if (options["public-key"] !== undefined) {
@@ -432,7 +480,7 @@ async function main(argv) {
   if (!asset) prepareCheckout(root, options.dryRun);
   const current = asset
     ? await fetchRelease(plan.manifestUrl)
-    : currentRelease(root, plan.manifestPath);
+    : newerRelease(currentRelease(root, plan.manifestPath), plan.channel === "development" ? currentRelease(root, `apps/${plan.app}/latest.json`) : undefined);
   checkNewer(plan.version, current);
   const taken = tagTaken(plan.tag, plan.repo);
   if (taken) throw new Error(`Refusing to publish: ${taken} on ${plan.repo}`);
@@ -536,8 +584,10 @@ The draft ${plan.tag} was created but not published` +
         console.warn(`warning: ${plan.manifestUrl} does not serve ${plan.version} yet; check it`);
       return;
     }
-    mkdirSync(dirname(join(root, plan.manifestPath)), { recursive: true });
-    writeFileSync(join(root, plan.manifestPath), manifestText);
+    for (const manifestPath of plan.manifestPaths) {
+      mkdirSync(dirname(join(root, manifestPath)), { recursive: true });
+      writeFileSync(join(root, manifestPath), manifestText);
+    }
     pushManifest(root, plan);
     console.log(`Pushed ${plan.manifestPath}: ${Object.keys(manifest.platforms).join(", ")}`);
   } finally {

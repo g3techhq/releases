@@ -4,12 +4,14 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import {
   checkNewer,
+  assertProductionCertificate,
   compareSemver,
   displayName,
   keyMatches,
   latestAssetUrl,
   parseArgs,
   planRelease,
+  newerRelease,
   releaseCommands,
   releaseManifest,
 } from "../scripts/publish-local.mjs";
@@ -58,7 +60,7 @@ test("the command line reads repeated files, extras and flags", () => {
 });
 
 test("the command line refuses what it does not know", () => {
-  assert.throws(() => parseArgs(["--channel", "beta"]), /Unknown option --channel/);
+  assert.throws(() => parseArgs(["--unknown", "beta"]), /Unknown option --unknown/);
   assert.throws(() => parseArgs(["ad-sentinel"]), /Unexpected argument/);
   assert.throws(() => parseArgs(["--app"]), /needs a value/);
   assert.throws(() => parseArgs(["--app", "--dry-run"]), /needs a value/);
@@ -75,8 +77,8 @@ test("a release is planned under its tag, with the download URLs latest.json nam
   assert.equal(plan.tag, "ad-sentinel-v1.2.0");
   assert.equal(plan.title, "Ad Sentinel 1.2.0");
   assert.equal(plan.baseUrl, BASE);
-  assert.equal(plan.manifestPath, "apps/ad-sentinel/latest.json");
-  assert.equal(plan.commitMessage, "release(ad-sentinel): 1.2.0 on latest");
+  assert.equal(plan.manifestPath, "apps/ad-sentinel/production.json");
+  assert.equal(plan.commitMessage, "release(ad-sentinel): 1.2.0 on production");
   assert.equal(plan.notes, "Faster startup.");
   assert.equal(plan.pageNotes, "Faster startup.\n\nBuilt from Gateway3B/ad-sentinel@0123abcd.");
   assert.deepEqual(
@@ -273,4 +275,41 @@ test("asset mode refuses a pre-release and a file named latest.json", () => {
   assert.throws(() => plan("--manifest", "store"), /commit or asset/);
   assert.throws(() => plan("--repo", "releases"), /<owner>\/<name>/);
   assert.throws(() => plan("--tag", "v1.2.0 beta"), /--tag/);
+});
+
+
+test("development bridges installed clients without touching stable or beta feeds", () => {
+  const dev = planRelease(parseArgs(args("--prerelease")));
+  assert.equal(dev.channel, "development");
+  assert.deepEqual(dev.manifestPaths, ["apps/ad-sentinel/development.json", "apps/ad-sentinel/latest.json"]);
+  const beta = planRelease(parseArgs(args("--channel", "beta")));
+  assert.equal(beta.prerelease, true);
+  assert.deepEqual(beta.manifestPaths, ["apps/ad-sentinel/beta.json"]);
+  const stable = planRelease(parseArgs(args("--channel", "production")));
+  assert.equal(stable.prerelease, false);
+  assert.deepEqual(stable.manifestPaths, ["apps/ad-sentinel/production.json"]);
+  assert.throws(() => planRelease(parseArgs(args("--channel", "production", "--prerelease"))), /Production/);
+  assert.throws(() => planRelease(parseArgs(args("--channel", "latest"))), /channel/);
+});
+
+
+test("a newer Android-only release cannot silently drop the Windows feed", () => {
+  const plan = planRelease(parseArgs(args("--prerelease")));
+  assert.throws(() => releaseManifest(plan, { "AdSentinel_1.2.0.apk": SIGNATURE }, "now", {
+    version: "1.1.0", platforms: { android: {}, "windows-x86_64-nsis": {} }
+  }), /drop existing platforms/);
+});
+
+
+test("the legacy bridge cannot regress if an older publisher advanced latest.json", () => {
+  assert.equal(newerRelease({version:"1.0.0"}, {version:"1.1.0"}).version, "1.1.0");
+  assert.equal(newerRelease(undefined, {version:"1.1.0"}).version, "1.1.0");
+  assert.equal(newerRelease({version:"1.1.0"}, undefined).version, "1.1.0");
+});
+
+
+test("production rejects a debug APK certificate or missing verification", () => {
+  assert.throws(() => assertProductionCertificate(""), /not verified/);
+  assert.throws(() => assertProductionCertificate("Signer #1 certificate SHA-256 digest: abcdef\nSigner #1 certificate DN: CN=Android Debug,O=Android,C=US"), /Debug-signed/);
+  assert.doesNotThrow(() => assertProductionCertificate("Signer #1 certificate SHA-256 digest: abcdef\nSigner #1 certificate DN: CN=Release"));
 });
