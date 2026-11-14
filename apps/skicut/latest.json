@@ -1,15 +1,15 @@
 {
-  "version": "0.1.3",
-  "notes": "Snow Cut 0.1.3.\n\n- Windows: SnowCut_0.1.3_x64-setup.exe installs Snow Cut for the current user; installed copies update from here.\n- Android: a debug-signed dev build for sideloading, with the in-app updater; not for Play.\n\nNo backend. Changes since 0.1.2:\n\n- chore(release): skicut 0.1.3 (e7efbca)\n- g3-ui: frosted surfaces blur in Android web views again, NavBar can float as a pill, an iOS toolbar segment pill keeps its longest label on a phone, and an expanded AdaptiveNav rail opens again (g3techhq/g3-ui@71d6aab, @ebcdb7a)\n\nBuilt from the local skicut repository (it has no GitHub remote).",
-  "pub_date": "2026-11-12T23:04:03Z",
+  "version": "0.1.4",
+  "notes": "Debug-signed Android dev build for sideloading (not for Play), and the Windows installer.\n\nBackend: none (on-device only)\n\nAndroid APK and Windows installer.\n\nChanges since the last release (e7efbca):\n\n- chore(release): skicut 0.1.4 (68e9d29)\n- feat(app): g3-brand's shared About in a sheet, and its update dialog (c00177a)\n- refactor(app): build the first page's head with g3-ui's NativeHead (7adc770)\n- feat: export timelines for Final Cut Pro and Premiere Pro (c49c0df)",
+  "pub_date": "2026-11-14T10:24:44Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.3/SnowCut_0.1.3_arm64.apk",
-      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj31yokoHEkHFduFWP2L2ip7xWMIl27i01S5S1AVzlnOFLVBN0wZpwCLzCwJLcOMBOD00GVG2SLuEKS2c/KORXwI=\ntrusted comment: timestamp:1794524643\tfile:SnowCut_0.1.3_arm64.apk\thashed\nhwwz6n3+UOJ10L+/r3O1E9wWZGEGn0VUqfYnqkTGwoL7/TQ9Wv8NNFHH/0lv46IFnNrRSXWNPrDvTzDxL3ahDw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.4/SnowCut_0.1.4_arm64.apk",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Ajy/MQX4UxOz7q98GU590WCoW13le+GXZTjWJmqlQzkCkvDhOOiOQuzBLfiqx3bigJ8piN3P3XCXsTQ28Z9qyTAA=\ntrusted comment: timestamp:1794651884\tfile:SnowCut_0.1.4_arm64.apk\thashed\n5xXq37rKxEuCt3zIWXHCoX6GWNppU+ZrQ21illguPGUfx/22txiaThZa01qpPqvKHI4/2rm1/wr4SecqiHCBAw==\n"
     },
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.3/SnowCut_0.1.3_x64-setup.zip",
-      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj5D2kV9P1zxx6+RFKgt7K7y5qSyS5e/t5GwQGUH4mF2iLzBwUR1X8g1yFWwBvW4lYuIxBkdHSvSNxR8GSSYZEgg=\ntrusted comment: timestamp:1794524643\tfile:SnowCut_0.1.3_x64-setup.zip\thashed\n/VAayWOFYzEEuYbO5PYvrcSmnSN45ScHuBjJoxSzY5g0C2mPZRazWSTqnlmBRKbyA/GTWOoHO5b05O+4V7i6CQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.4/SnowCut_0.1.4_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj2NmY88NTHeqIv7MXhIAFTXJXx0X6YBLm+7nk98XeauXspF+8dq6gdK8XvBAf0Z5E9Z8qC4czFtAZ+fo9QGk9wE=\ntrusted comment: timestamp:1794651884\tfile:SnowCut_0.1.4_x64-setup.zip\thashed\n+25vDaGsOAkSFiZogAW2HmAB+HXFJvlVBR3gawAkiq1anw9kVly2xbAjXX+33BwtXrinKdXPPxch9sNJfmGtAA==\n"
     }
   }
 }
