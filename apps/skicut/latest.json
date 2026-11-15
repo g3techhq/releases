@@ -1,15 +1,15 @@
 {
-  "version": "0.1.5",
-  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: none (on-device only); licenses from https://staging-pay.g3tech.net (Stripe test mode)\n\nNew: a 14-day trial. After it, saved cuts still open and play; making new cuts and exporting need a license key (Buy Snow Cut / Enter license key in About). Android APK and Windows installer.\n\nChanges since the last release (c00177a):\n\n- chore(release): skicut 0.1.5 (a3fb11a)\n- build(deps): lock g3-payments with the Android TLS fix (654b582)\n- build(deps): lock g3-payments for the license feature (4414d98)\n- feat(app): 14-day trial and license keys through g3-payments (846d97e)\n- build(deps): commit a lockfile that resolves without local overrides (0f86fc1)\n- build: take dioxus-sdk-time from the Gateway3B fork (908cb1c)\n- style: rustfmt under the repo's 2024 settings (267e31e)\n- chore(release): skicut 0.1.4 (68e9d29)",
-  "pub_date": "2026-11-14T17:56:56Z",
+  "version": "0.1.6",
+  "notes": "Debug-signed Android development build for sideloading, not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_android.\nBackend: none. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nCommits since the previous release source (a3fb11a):\n\n- chore(release): skicut 0.1.6 (38f2899)\n- build: pin g3-brand 3c9d7f6 (45826ab)\n- feat: profiled development builds and the g3tech.net open-app link (c588d14)\n\nBuilt from g3techhq/skicut@38f2899b7ff7af17d1b4560b073dd6eeee9708c6.\n\nThe Windows development installer and updater archive are included in the same release.",
+  "pub_date": "2026-11-15T16:26:34Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.5/SnowCut_0.1.5_arm64.apk",
-      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Ajy2AU1YZH4+iHlwfwvAQJZ7nKnHqYDTKxr/FAW1QPdPOhWz6YbR2HknXBlul4cVHg0QAzsDAgsxQsBetyda2hAI=\ntrusted comment: timestamp:1794679016\tfile:SnowCut_0.1.5_arm64.apk\thashed\nk/Zgp8VokE/Kf0VYcHkHfEipDyBkHrzsd3DrTwHoh20duy+OEm/xk4bN+hga+giEJs6Kk0ovXnlWFp88EVpqBA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.6/skicut-0.1.6.apk",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj0eYL/we65P6ajKrl0Sv/4g/erS86HJduAGB8cjIS7SYnlBZ8nuM3DO6Nf8h4MKhfyvE/IvpjAZZGdAn3ptspwY=\ntrusted comment: timestamp:1794759994\tfile:skicut-0.1.6.apk\thashed\nG8uhM3D3nEnAPH8RPL96UMcz7LBIaBUKIiIUczAGzZwCMkGCl8N4ZgDBu6FfOj9jQK1M+G723cyibvjn4JwFCw==\n"
     },
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.5/SnowCut_0.1.5_x64-setup.zip",
-      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8AjyYlFMoyjLNzARcF/f0sfi02qpxLVUJkttUXq3Uq/s4njgA1AbKkXgytVlwTWtg5U9BQcwQ9wvAntnAv49z1bQ8=\ntrusted comment: timestamp:1794679016\tfile:SnowCut_0.1.5_x64-setup.zip\thashed\nSq7BKi9Wp8vDTcOMUPTzBRPKaFpatzNBbwYHf1RI30c3rdRp3ectpgtERWGIaotgCkqmFSYOI950Cd2aFXe7CA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.6/SnowCut_0.1.6_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj3HeRKGyB3QrKsaIMzs8n+ZdAewXzE/9RmXeTWcAGnq6Z6dOfAS95zxltFtRv44YK3Fixj0TKX9V+is2yc9Ykw8=\ntrusted comment: timestamp:1794759994\tfile:SnowCut_0.1.6_x64-setup.zip\thashed\n7Xlwjjc1tcrWe3Zn9NfiZpdaAKsOT4AEknf4hb/kJdEhARM1sPskWLhQWJCAkm98ierUq+I0h/qfckTqbhyFCA==\n"
     }
   }
 }
