@@ -5,6 +5,7 @@ import { test } from "node:test";
 import {
   checkNewer,
   assertProductionCertificate,
+  verifyReleaseApks,
   compareSemver,
   displayName,
   keyMatches,
@@ -312,4 +313,18 @@ test("production rejects a debug APK certificate or missing verification", () =>
   assert.throws(() => assertProductionCertificate(""), /not verified/);
   assert.throws(() => assertProductionCertificate("Signer #1 certificate SHA-256 digest: abcdef\nSigner #1 certificate DN: CN=Android Debug,O=Android,C=US"), /Debug-signed/);
   assert.doesNotThrow(() => assertProductionCertificate("Signer #1 certificate SHA-256 digest: abcdef\nSigner #1 certificate DN: CN=Release"));
+});
+
+test("production verifies APKs while an independent latest asset release allows development signing", () => {
+  const production = planRelease(parseArgs(args("--channel", "production", "--attach", "dist/TV.apk")));
+  const verified = [];
+  verifyReleaseApks(production, path => verified.push(path));
+  assert.deepEqual(verified, ["dist/AdSentinel_1.2.0.apk", "dist/TV.apk"]);
+
+  const tawny = planRelease({ ...parseArgs(args("--manifest", "asset", "--repo", "Gateway3B/tawny")), app: "tawny" });
+  assert.equal(tawny.channel, "latest");
+  assert.equal(tawny.prerelease, false);
+  for (const plan of [tawny, planRelease(parseArgs(args("--prerelease"))), planRelease(parseArgs(args("--channel", "beta")))]) {
+    verifyReleaseApks(plan, () => assert.fail("Development APK sent through production certificate verification"));
+  }
 });

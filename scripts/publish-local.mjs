@@ -448,6 +448,15 @@ export function verifyProductionApk(file) {
   assertProductionCertificate(result.stdout);
 }
 
+// A normal latest release can be an independent app's development asset feed.
+// Production signing policy belongs to the explicit production channel.
+export function verifyReleaseApks(plan, verifyApk = verifyProductionApk) {
+  if (plan.channel !== "production") return;
+  for (const file of [...plan.files, ...plan.attach]) {
+    if (file.path.toLowerCase().endsWith(".apk")) verifyApk(file.path);
+  }
+}
+
 async function main(argv) {
   const options = parseArgs(argv);
   if (options.help) {
@@ -461,11 +470,7 @@ async function main(argv) {
   for (const { path } of [...plan.files, ...plan.attach]) {
     if (!existsSync(path) || !statSync(path).isFile()) throw new Error(`No file ${path}`);
   }
-  if (!plan.prerelease) {
-    for (const file of [...plan.files, ...plan.attach]) {
-      if (file.path.toLowerCase().endsWith(".apk")) verifyProductionApk(file.path);
-    }
-  }
+  verifyReleaseApks(plan);
   const key = parseSecret(readFileSync(options.key, "utf8"));
   if (options["public-key"] !== undefined) {
     const given = options["public-key"];
