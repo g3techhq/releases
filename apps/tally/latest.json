@@ -1,11 +1,11 @@
 {
-  "version": "0.1.2",
-  "notes": "Dev build of Tally for Windows, with the 14-day trial.\n\nAfter 14 days without a license your books open read-only: you can still view them, run reports and export. Buy a license from About (or the banner) and enter the key there to keep editing. Licenses come from the staging license server (staging-pay.g3tech.net, Stripe test mode).\n\nChanges since 0.1.1:\n\n- chore(release): tally 0.1.2 (5220e99)\n- feat(app): a 14-day trial, then a license key or read-only books (638a8d7)\n- feat(store): a read-only switch that refuses saves but keeps every read (f97e912)\n- feat(app): show what is owed on cards and loans in red (0d1730a)\n- build: patch the Dioxus fork and g3 crates from git (dd1eaad)",
-  "pub_date": "2026-11-14T17:45:02Z",
+  "version": "0.1.3",
+  "notes": "Development build of Tally for Windows, for direct distribution. Not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_desktop.\nBackend: none. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nChanges since 0.1.2 include profiled build information, consistent register/reconciliation signs, recurring-payment fixes, and loading the native styles before revealing the app window. Includes updated shared g3 libraries.\n\nBuilt from g3techhq/tally@93f23707a1a7efa1c378eeb2bad2b02fd507501d.",
+  "pub_date": "2026-11-15T14:44:14Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.2/Tally_0.1.2_x64-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I/rtEoDFYzwBRLBZFq8rbC4i+UqzYkO/+YD0d7DweLDCZC/cI9jeyaqrlbUkbeB2X5sBsjt39zU0Fpz6rBFLZA0=\ntrusted comment: timestamp:1794678302\tfile:Tally_0.1.2_x64-setup.zip\thashed\nGtaooTlFx9ABc3Nd13TqD0UKt3rcNYIRHe54PfKUFEiMTx+mlcCEk9rr6VMR5PSKJzXIdxcA+SLcCiUA2wnJDQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.3/tally_0.1.3_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I9zRRcZwK0+v+MDGU4yFEQBLIYHk1ruBKim3tlTcrTR+gdp+g8/99RatQ5mShOLTP1e8nvBoiClRjFZJXBrlGwg=\ntrusted comment: timestamp:1794753854\tfile:tally_0.1.3_x64-setup.zip\thashed\nWZby9lmfSvRKcZZBpX/pOCWp+ClCO3C4fMo/4HeD67j11SuM+17FdsB0FQKJj6ufuGtQNd6fkwWZZ/rW4OmaDw==\n"
     }
   }
 }
