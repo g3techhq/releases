@@ -1,6 +1,6 @@
 {
   "version": "0.1.3",
-  "notes": "Development build of Tally for Windows, for direct distribution. Not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_desktop.\nBackend: none. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nChanges since 0.1.2 include profiled build information, consistent register/reconciliation signs, recurring-payment fixes, and loading the native styles before revealing the app window. Includes updated shared g3 libraries.\n\nBuilt from g3techhq/tally@93f23707a1a7efa1c378eeb2bad2b02fd507501d.",
+  "notes": "Development build of Tally for Windows, for direct distribution. Not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_desktop.\nBackend: none. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nChanges since 0.1.2 include profiled build information, consistent register/reconciliation signs, recurring-payment fixes, and loading the native styles before revealing the app window. Includes updated shared g3 libraries.\n\nCommits since the previous release source (5220e99):\n\n- chore(release): tally 0.1.3 (93f2370)\n- fix(accounts): keep register signs consistent and avoid blank startup frames (7cfcd6f)\n- feat: profiled development builds (9edbf13)\n- feat(import): import several statements for one account together (fc779ed)\n\nBuilt from g3techhq/tally@93f23707a1a7efa1c378eeb2bad2b02fd507501d.",
   "pub_date": "2026-11-15T14:44:14Z",
   "platforms": {
     "windows-x86_64-nsis": {

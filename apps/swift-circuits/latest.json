@@ -1,6 +1,6 @@
 {
   "version": "0.1.5",
-  "notes": "Debug-signed development build for Android sideloading, not a store build.\n\nEnvironment staging; channel development; distribution direct_android.\nBackend: https://staging-swiftcircuits.g3tech.net. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nChanges since 0.1.4: current shared About/build identity, authentication, native plugin, payment and UI source pins; profiled staging distribution. The source version and remote lockfile are updated together.\n\nBuilt from g3techhq/swift-circuits@98c3da93a273586e429cdb3e6c2889a894b323b7.",
+  "notes": "Debug-signed development build for Android sideloading, not a store build.\n\nEnvironment staging; channel development; distribution direct_android.\nBackend: https://staging-swiftcircuits.g3tech.net. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nChanges since 0.1.4: current shared About/build identity, authentication, native plugin, payment and UI source pins; profiled staging distribution. The source version and remote lockfile are updated together.\n\nCommits since the previous release source (9c6723f):\n\n- chore(release): swift-circuits 0.1.5 (98c3da9)\n- Build staging images with the staging environment's OAuth client (6cdcf23)\n\nBuilt from g3techhq/swift-circuits@98c3da93a273586e429cdb3e6c2889a894b323b7.",
   "pub_date": "2026-11-15T15:03:48Z",
   "platforms": {
     "android": {
