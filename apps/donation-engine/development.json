@@ -1,11 +1,11 @@
 {
-  "version": "0.1.3",
-  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging-donationengine.g3tech.net\n\nChanges since the last release (5e56688):\n\n- build(deps): lock g3-auth with account email, and g3-brand's shared About (d8cf5f0)\n- feat(auth): move account email onto g3-auth, and confirm new emails (c5b359a)\n- refactor(about): use g3-brand's shared About and update dialogs (5e27e2f)\n- chore(release): donation-engine 0.1.3 (cfd51aa)\n- build(deps): lock g3-ui with NativeHead and g3-brand's update dialog (532d768)\n- fix(mobile): style the first paint with g3-ui's NativeHead (e22b655)",
-  "pub_date": "2026-11-14T10:09:31Z",
+  "version": "0.1.4",
+  "notes": "Debug-signed Android development build for sideloading, not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_android.\nBackend: https://staging-donationengine.g3tech.net. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nCommits since the previous release source (d8cf5f0):\n\n- chore(release): donation-engine 0.1.4 (b7ef495)\n- fix(donations): reopen unpaid combined checkouts without creating duplicates (c87b6d6)\n- Build staging images with the staging environment's OAuth client (5486271)\n- build: pin g3-brand 3c9d7f6 in the portable lockfile (b660013)\n- feat: profiled development builds and shared App Link associations (9e5c366)\n\nBuilt from g3techhq/donation-engine@b7ef4951a01e8801751cc5fbbfdede38d501e05a.",
+  "pub_date": "2026-11-15T15:54:01Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.3/DonationEngine_0.1.3.apk",
-      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2svo2VQuD1KhvOoan5PSodBIXCpMhPsu+6bdgfypenGwM5YOUW3Oey+FiDbYSr8klW/hdRps43HvctOFia7BeQA=\ntrusted comment: timestamp:1794650971\tfile:DonationEngine_0.1.3.apk\thashed\nvUwn09npHLJHWlzBumuqI73anhtnrVj7oJqur/xzOh0/iqX50YFfjZ5Oe+us5ywTGOJbkCPkVvEROhKNSzykAg==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.4/donation-engine-0.1.4.apk",
+      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2oqzm9bBzXd89dULNA+12nuF9Z1VV4FqGkt8IcJ12sCjZ0TrUwqkHAklka/XLOGGeZnfC5HLCTiyqJzlnXvSEAU=\ntrusted comment: timestamp:1794758041\tfile:donation-engine-0.1.4.apk\thashed\ndrZUUh1oDdswHEL7bCiLeJXW0ua1z1neapc5e4Fbbj7/4oHscKIRZGhUlCj4CyNn52PwkJKp1pTtzHK+DpKqBA==\n"
     }
   }
 }
