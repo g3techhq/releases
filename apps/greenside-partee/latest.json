@@ -1,11 +1,11 @@
 {
-  "version": "0.1.4",
-  "notes": "Debug-signed dev build for sideloading (not for Play).\n\nBackend: https://staging.greensidepartee.com\n\nChanges since the last release (9dad9b6):\n\n- chore(release): greenside-partee 0.1.4 (b48a5f4)\n- build(deps): lock g3-payments and drop async-stripe and jsonwebtoken 9 (f12aaab)\n- refactor(billing): take Stripe and the App Store from g3-payments (bb8b494)",
-  "pub_date": "2026-11-14T17:39:23Z",
+  "version": "0.1.5",
+  "notes": "Debug-signed Android development build for sideloading, not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_android.\nBackend: https://staging.greensidepartee.com. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nCommits since the previous release source (b48a5f4):\n\n- chore(release): greenside-partee 0.1.5 (8663dad)\n- ci: build staging images with the staging OAuth client (bc9cd1f)\n- build: pin g3-brand 3c9d7f6 (8a0b428)\n- feat: profiled development builds; direct Android checkout follows sideload (9237814)\n\nBuilt from g3techhq/greenside-partee@8663dad4e8717d9fc5416e24628a7b09d7c9b153.",
+  "pub_date": "2026-11-15T15:36:12Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.4/GreensidePartee_0.1.4.apk",
-      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DlsScn9OYER/dOj6HL67igQeTLz+OVPjT5sRAR5ygs61rHHJEaRWjxuyn2HMD/1T9zJ3yUizeqEel7YxOYmxNgg=\ntrusted comment: timestamp:1794677963\tfile:GreensidePartee_0.1.4.apk\thashed\n+MBprNg/LdcyhgAqHkkG+19oG/uukl4m1PLE2W/tkJwMnV/yjS0SvEgr+novlrWnzlGjx8+rvNsukX4dZ3SRBA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.5/greenside-partee-0.1.5.apk",
+      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DrqVlS2sadllRbG5pYS2eFck3G9LP1QerPoYmAsfIJEli/lHU9ZUSuURK3y1maXmyM/2Nd3wVP/ooTvldFnwWgE=\ntrusted comment: timestamp:1794756972\tfile:greenside-partee-0.1.5.apk\thashed\n43PK7bUnjSpaaipqJNXfCIqVd80ReF2pfnNdBXyoocMOMEAlzaVRVgALwhdNoT8PPutz0c+Q5XqwilriihocBQ==\n"
     }
   }
 }
