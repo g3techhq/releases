@@ -1,11 +1,11 @@
 {
-  "version": "0.1.5",
-  "notes": "Debug-signed Android development build for sideloading, not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_android.\nBackend: none. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nCommits since the previous release source (fbda97e):\n\n- chore(release): ad-sentinel 0.1.5 (aa3b9ab)\n- build: pin g3-brand 3c9d7f6 (4d99e5e)\n- feat: profiled development builds and the g3tech.net open-app link (ad4c5ba)\n\nBuilt from g3techhq/ad-sentinel@aa3b9aba64ad4679fd3cc6ed1e9dd21eafbd5452.\n\nThe Google TV APK is attached for manual sideloading; it has no updater.",
-  "pub_date": "2026-11-15T16:17:36Z",
+  "version": "0.1.6",
+  "notes": "Debug-signed Android development build for sideloading, not a store build.\n\nBuilt with the legacy (unprofiled) build path while the profiled pilot is checked. Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Updates from the development feed.\n\nCommits since the previous release source (aa3b9ab):\n\n- chore(release): ad-sentinel 0.1.6 (f83501e)\n- feat(app): one Remote tab led by the remote pad (3aaab68)\n- fix(detect): learn the right logo and stop unmuting inside breaks (12e6532)\n\nThe Google TV APK is attached for manual sideloading; it has no updater.\n\nBuilt from g3techhq/ad-sentinel@f83501efd91ef9ce103027b11aa5687d08bd43cf.",
+  "pub_date": "2026-11-16T23:30:05Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.5/ad-sentinel-0.1.5.apk",
-      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zSyvI7O9S7K7QlWJsRDCMmDiS+kqSMWBLbxrhy2cEMVsVPKlyLuoOpbRWnJoBTVjzFoCQYSDqtnRgj958zHLMAA=\ntrusted comment: timestamp:1794759456\tfile:ad-sentinel-0.1.5.apk\thashed\nAAJwLlAlOMUhwmYqfwa5ggyHKXc1jeHELM1/L7CLL/k3uKeGYUuO1g/2XkBIM4IEdMHGHTjgJH3rtHj2vXs0Dg==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.6/ad-sentinel-0.1.6.apk",
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zTRtqJDpctzMGeZIDvWQt66MgJ2bmsbR7tDkA5TSmLpFxKUtYWPtp18c2qTEKDpRHtW8gveK+KhqE4TTGmEFDgg=\ntrusted comment: timestamp:1794871805\tfile:ad-sentinel-0.1.6.apk\thashed\nIgxvjpMNLqlgJHD2bjT48rbB3c+5tnWeQJZy2F4DMuJS87tHNKcafd4tPcOb9G2IM1gqLyRlDn7ntQQXP0zOAQ==\n"
     }
   }
 }
