@@ -1,11 +1,11 @@
 {
-  "version": "0.1.4",
-  "notes": "Development build of Tally for Windows, for direct distribution. Not a store build.\n\nBuilt with the legacy (unprofiled) build path while the profiled pilot is checked. Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net.\n\nIncludes the shared g3-brand updater fix (800a257): installing an update from Tally now waits for the installer to take over before the app exits, so the update runs and Tally reopens.\n\nCommits since the previous release source (93f2370):\n\n- chore(release): tally 0.1.4 (53e5bf8)\n- feat: snappy UI on big books, account sections and hidden accounts (1ce8d5d)\n\nBuilt from g3techhq/tally@53e5bf8d0eca42d4de2f9134401519ff80dfd968.",
-  "pub_date": "2026-11-16T23:35:22Z",
+  "version": "0.1.5",
+  "notes": "Development build of Tally for Windows, for direct distribution. Not a store build.\n\nBuilt with the legacy (unprofiled) build path while the profiled pilot is checked. Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net.\n\nCommits since the previous release source (53e5bf8):\n\n- chore(release): tally 0.1.5 (57a1966)\n- fix(invest): count each account once in monthly changes (f66bc4f)\n- style: apply rustfmt to the latest app pages (a396881)\n- feat: tag suggestions, spending ranges, Wallet checks, auto-filing, bulk account edits (a8089fd)\n\nBuilt from g3techhq/tally@57a19669daae2a0752a46b08adc0879d6751788c.",
+  "pub_date": "2026-11-18T14:08:44Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.4/tally_0.1.4_x64-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8IzO2GbLhPF0Eh0fqprHw746x0lJsLopvZeMbsUZRPtTh7j7sRPTh0oIyQm8VApOt8mMBxjzjtB24MxGVKNWPsg0=\ntrusted comment: timestamp:1794872122\tfile:tally_0.1.4_x64-setup.zip\thashed\nhvuDKcoIS+t+kHZfH2SKdnIBhu6mZ2XWxO+bmdPLNTw9tleVaBdEspX8Hr4460qFh8hQEIedyluM15QO0m8zAg==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.5/tally_0.1.5_x64-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I5awAOhMYEjssdQnIHSp5AG2ru0eijcwYFMuV9ihNVlxiyYC4sirgkvEIsiyvs68c2BgtSK4/lIHvJ9cNy0fHAw=\ntrusted comment: timestamp:1795010924\tfile:tally_0.1.5_x64-setup.zip\thashed\ni+rzHMHpnN8gWXBnhhE2LUKTRKfY027EZ+/ai0et0e1rkKN7djJ3rGI1SZE/9zeXdTsH0Am9TccTtWdJl66jCw==\n"
     }
   }
 }
