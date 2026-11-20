@@ -1,11 +1,11 @@
 {
-  "version": "0.1.4",
-  "notes": "Debug-signed Android development build for sideloading, not a store build.\n\nEnvironment: staging. Channel: development. Distribution: direct_android.\nBackend: https://staging-mediamancer.g3tech.net. Catalog: https://staging-catalog.g3tech.net. Payments: https://staging-pay.g3tech.net.\n\nCommits since the previous release source (f293708):\n\n- chore(release): media-mancer 0.1.4 (b841f10)\n- ci: build staging images with the staging OAuth client (3c63478)\n- build: lock the info site's g3-brand dependency (f5e7ef0)\n- build: pin g3-brand 3c9d7f6 (55ea161)\n- feat: profiled development builds and HTTPS open-app links (403e54c)\n\nBuilt from g3techhq/media-mancer@b841f1087a141df5182edbe8342c527d4f566651.",
-  "pub_date": "2026-11-15T15:27:43Z",
+  "version": "0.1.5",
+  "notes": "Debug-signed development build of Media Mancer 0.1.5 for sideloading (Android). Not a store build.\n\nBuilt with the profiled development launcher: environment staging, channel development. Backend: https://staging-mediamancer.g3tech.net. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Update feed: apps/media-mancer/development.json.\n\nCommits since the previous release source (b841f10):\n\n\nBuilt against these g3 library commits since the previous release:\n\n- g3-native-plugins: fix(updater): reopen the app when the Windows installer lingers (6c7c8bc)\n- g3-brand: fix(legal): govern terms by Florida law; describe Ad Sentinel cloud checks (6c78aee); chore(catalog): remove Wealth Wedges (ad5adf5)",
+  "pub_date": "2026-11-20T09:31:55Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.4/media-mancer-0.1.4.apk",
-      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSMasBXv2dUG6LaXfATjXHVcGkNZSW4lagUfRP4qbGGs0Kp0KxQCTY7xYBN8w3Kfy5pZlXkGi7pFkXMRv74QTHQY=\ntrusted comment: timestamp:1794756463\tfile:media-mancer-0.1.4.apk\thashed\nLutLH55JYzb509jXIUl6w221DOIdQdzrF1gH51v3A8OU8UkMghqBDQqY8pMaa2puclEaNebrHrVHaJWM6c1tCQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.5/media-mancer-0.1.5.apk",
+      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSE7lcwsqgMsD2W7B7o3yt5vs3ILQvwvRsk3Y0vTBQ55z0a+W59Vbw3TQhy+lhYpV6NuPZpk2gBclFxoid5FHdQI=\ntrusted comment: timestamp:1795167115\tfile:media-mancer-0.1.5.apk\thashed\nza72Ou6BzlkQRQpA2DA45fHK7UdhQNQWygMOwIn8NsiTYKqCbAeo5b8vuRBx2nukqWZpkX05pdPw89Ld79V5Dw==\n"
     }
   }
 }
