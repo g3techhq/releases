@@ -1,11 +1,11 @@
 {
-  "version": "0.1.6",
-  "notes": "Development build of Tally for Windows, for direct distribution. Not a store build.\n\nBuilt with the profiled development launcher (environment staging, channel development, distribution direct_desktop). Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Update feed: apps/tally/development.json.\n\nCommits since the previous release source (57a1966):\n\n- chore(release): tally 0.1.6 (29d41dd)\n- fix(plaid): tie brokerage balances to the cent (7d61a15)\n- feat(import): read the balance of statements that list no transactions (35c9ba3)\n- feat(import): read retirement plan statements from Empower (14b1978)\n- feat(plaid): give back imported history from the opening balance (d2dda0c)\n- fix(plaid): tie each synced account's opening balance to the bank's balance (9e6cc21)\n\nThe attached build-info JSON records the compiled settings; these notes do not prove them.",
-  "pub_date": "2026-11-19T09:09:56Z",
+  "version": "0.1.7",
+  "notes": "Development build of Tally 0.1.7 for Windows, for direct distribution. Not a store build.\n\nBuilt with the profiled development launcher (environment staging, channel development, distribution direct_desktop). Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Update feed: apps/tally/development.json.\n\nCommits since the previous release source (29d41dd):\n\n- chore(release): tally 0.1.7 (83dc1ff)\n- docs(reports): note that Wealth Wedges moved to Gateway3B (df874f7)\n- feat(app): list this session's notifications from the rail (9a440ee)\n- fix(plaid): say nothing about activity that moved no cash (11cbe47)\n\nBuilt against these g3 library commits since the previous release:\n\n- g3-native-plugins: fix(updater): reopen the app when the Windows installer lingers (6c7c8bc)\n- g3-brand: fix(legal): govern terms by Florida law; describe Ad Sentinel cloud checks (6c78aee); chore(catalog): remove Wealth Wedges (ad5adf5)",
+  "pub_date": "2026-11-20T10:01:32Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.6/tally-0.1.6-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I0njD0+L2i2SKd07oBrqz19XMr3Cr2pOOxnM3hRw9UXfPN03BvD3h38DW0QQZZbJ76iIaGLraltN8zmys346hAM=\ntrusted comment: timestamp:1795079396\tfile:tally-0.1.6-setup.zip\thashed\nMVygqe5V2qTiLuxQikrkWXY59N3FoFYSu9GBGKBjfmEJKJEX0g0wi+v1Qqh6TzzJhC1F1Dp5QgTqP3i923c2AA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.7/tally-0.1.7-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I4rgbQ2EEylZO7oPmLahLwK/Ki1Ug8XTYpDH615z5K/7TXA0fC7V17zHkhX9GwZyDvvihEy1/bLvo3pPV/0KnAM=\ntrusted comment: timestamp:1795168892\tfile:tally-0.1.7-setup.zip\thashed\nKwqeWDTgjFCaoumY92kyTGcgqaUZPCO4DEmkb0a0hRT398m/pIS9mo1Fv/pnhaVtfltiIApz8wwxVw2lFqlrBA==\n"
     }
   }
 }
