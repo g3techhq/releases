@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "notes": "Development build of Tally 0.1.7 for Windows, for direct distribution. Not a store build.\n\nBuilt with the profiled development launcher (environment staging, channel development, distribution direct_desktop). Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Update feed: apps/tally/development.json.\n\nCommits since the previous release source (29d41dd):\n\n- chore(release): tally 0.1.7 (83dc1ff)\n- docs(reports): note that Wealth Wedges moved to Gateway3B (df874f7)\n- feat(app): list this session's notifications from the rail (9a440ee)\n- fix(plaid): say nothing about activity that moved no cash (11cbe47)\n\nBuilt against these g3 library commits since the previous release:\n\n- g3-native-plugins: fix(updater): reopen the app when the Windows installer lingers (6c7c8bc)\n- g3-brand: fix(legal): govern terms by Florida law; describe Ad Sentinel cloud checks (6c78aee); chore(catalog): remove Wealth Wedges (ad5adf5)",
-  "pub_date": "2026-11-20T10:01:32Z",
+  "version": "0.1.8",
+  "notes": "Development build 0.1.8 for staging: debug-signed Windows installer for sideloading, not a store build.\n\n- Backend: none (no app server)\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/tally/development.json\n\nChanges since the previous development build:\n\n- chore(release): tally 0.1.8 (cbf8357)\n- g3-ui fda2c51 fix(css): stop pinch from zooming the whole app (touch-action: pan-x pan-y on the page root and app shell)\n\nThe build-info JSON attached to this release records the compiled profile.",
+  "pub_date": "2026-11-22T10:30:12Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.7/tally-0.1.7-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I4rgbQ2EEylZO7oPmLahLwK/Ki1Ug8XTYpDH615z5K/7TXA0fC7V17zHkhX9GwZyDvvihEy1/bLvo3pPV/0KnAM=\ntrusted comment: timestamp:1795168892\tfile:tally-0.1.7-setup.zip\thashed\nKwqeWDTgjFCaoumY92kyTGcgqaUZPCO4DEmkb0a0hRT398m/pIS9mo1Fv/pnhaVtfltiIApz8wwxVw2lFqlrBA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.8/tally-0.1.8-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I1IuM6KmnaN5347vYjlEt7zDdmj0/2m5Q09cSgvYTLDrdMyvlbtvfgXpe2IMGYq035p17n8HZlbna652+k9VsQ0=\ntrusted comment: timestamp:1795343412\tfile:tally-0.1.8-setup.zip\thashed\noimlii3rf07Zf07+42IsMkyYM9qF7RtnpLjX6dVCfOMLKbl3iRMsK5lNHX31ezDiUYRYIXPtPrOezz1Xsr4PDw==\n"
     }
   }
 }
