@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "notes": "Debug-signed development build of Ad Sentinel 0.1.7 for sideloading (Android phone; Google TV APK attached, installs by hand). Not a store build.\n\nBuilt with the profiled development launcher: environment staging, channel development. Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Update feed: apps/ad-sentinel/development.json.\n\nCommits since the previous release source (f83501e):\n\n- chore: mark the app as proprietary to G3 Tech LLC (fcd3b50)\n\nBuilt against these g3 library commits since the previous release:\n\n- g3-native-plugins: fix(updater): reopen the app when the Windows installer lingers (6c7c8bc)\n- g3-brand: fix(legal): govern terms by Florida law; describe Ad Sentinel cloud checks (6c78aee); chore(catalog): remove Wealth Wedges (ad5adf5)",
-  "pub_date": "2026-11-20T09:46:19Z",
+  "version": "0.1.8",
+  "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\nNo backend: the app reads only the staging catalog (https://staging-catalog.g3tech.net).\nAlso attached: the Google TV overlay app (sideload it; it does not update itself).",
+  "pub_date": "2026-11-22T10:16:28Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.7/ad-sentinel-0.1.7.apk",
-      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zfG3h5BD5roodT6cP1neQHTv4keMYUTxyJDes1r9du4ZEpmlEhj/1exXgZmQLSC0FmEo0g+NmizgEFrObDg0gAU=\ntrusted comment: timestamp:1795167979\tfile:ad-sentinel-0.1.7.apk\thashed\nAaQ/VVLEtPmlxaI56jl42vrFyiXop38pEbP1Wov+b6+Vy7tXctbD9Y1s+tWP1epj6SHmU0jeOlg67K5p4Y7OAA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.8/ad-sentinel-0.1.8.apk",
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zRbhWD+PQT0mgYeUo6i7yQOVqT4Q5K/BiDIlVczQzPTezeo66v87b4V9q4kuEJCuHcWDZfjVk+uMfQTog9wgoA0=\ntrusted comment: timestamp:1795342588\tfile:ad-sentinel-0.1.8.apk\thashed\nif4iKPa42Ql+peYldG+PFT5mjBuTrm/ELzpCGvhIAlkV5NLsdMahGn+5es8KgbMRhT+tv9QLgEkLW2I21vgxBQ==\n"
     }
   }
 }
