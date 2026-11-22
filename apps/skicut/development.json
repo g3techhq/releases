@@ -1,15 +1,15 @@
 {
-  "version": "0.1.8",
-  "notes": "Debug-signed development build of Snow Cut 0.1.8 for sideloading (Android and Windows). Not a store build.\n\nBuilt with the profiled development launcher's staging profile (Android built with --release, because debug builds need symlinks Windows refuses without Developer Mode): environment staging, channel development. Backend: none. Catalog: https://staging-catalog.g3tech.net. Payments/licenses: https://staging-pay.g3tech.net. Update feed: apps/skicut/development.json.\n\nCommits since the previous release source (f3823d3):\n\n- chore: mark the app as proprietary to G3 Tech LLC (50d0015)\n\nBuilt against these g3 library commits since the previous release:\n\n- g3-native-plugins: fix(updater): reopen the app when the Windows installer lingers (6c7c8bc)\n- g3-brand: fix(legal): govern terms by Florida law; describe Ad Sentinel cloud checks (6c78aee); chore(catalog): remove Wealth Wedges (ad5adf5)",
-  "pub_date": "2026-11-20T09:58:03Z",
+  "version": "0.1.9",
+  "notes": "Development build 0.1.9 for staging: debug-signed Android APK and Windows installer for sideloading, not a store build.\n\n- Backend: none (no app server)\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/skicut/development.json\n\nChanges since the previous development build:\n\n- chore(release): skicut 0.1.9 (64f4337)\n- g3-ui fda2c51 fix(css): stop pinch from zooming the whole app (touch-action: pan-x pan-y on the page root and app shell)\n\nThe build-info JSON attached to this release records the compiled profile.",
+  "pub_date": "2026-11-22T10:25:25Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.8/skicut-0.1.8.apk",
-      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj9L/rS0NvUbz82ZG/g0tVBur0TfO9Yx5rr4G0xk350tYxgQRMUcJEfX8ClAcPl3K5p1p+4lQDN59i76UGbT4/QI=\ntrusted comment: timestamp:1795168683\tfile:skicut-0.1.8.apk\thashed\nZhI6Zj7978DkKu9Xzh1xcQV2/65tsIJfcY+0rzHlIgodjp7dVOG467tGTC0Jr5F7A+L2qufRwBMAIqcUeAx6BQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.9/skicut-0.1.9.apk",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Ajz5QyJGNzARsL/9Euj1R5lIeioDEBrNqUzH7VD6sMVvlculnxDojhkxISMezLHynkCgIzKYYW3l4sY4+8R9R1gw=\ntrusted comment: timestamp:1795343125\tfile:skicut-0.1.9.apk\thashed\n6zpEcvUTxz8+lUeSVJOqiCmsv143ncScgtgQIIu8RWefXX2lgWv57Eeg3+9rIGiz2cGTO+FXzBcthmqbHaHFDg==\n"
     },
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.8/skicut-0.1.8-setup.zip",
-      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Ajyv9MA6dp2E+fahQ/fmicWeXTDxl2Fg+Sex17CDN5qTyhQWMZ6pGTBEBrr2o+TktfMmVzeRaaTAW3woBQQfrggk=\ntrusted comment: timestamp:1795168683\tfile:skicut-0.1.8-setup.zip\thashed\nd4XjkZLbof29beS9eyhoiLUppqhs00x6Cle17pHM7g91xMqqwtMDQTe67xSULYjkmPkBTBEJ6sHFr0HgWVqHAw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/skicut-v0.1.9/skicut-0.1.9-setup.zip",
+      "signature": "untrusted comment: signature from release key 8F003FE35F5A44D4\nRUTURFpf4z8Aj6xhrGPgLiBtW5NvlTlTm1z1QLkKw63plan576xEwXEHrRuPRd01odPSSqdyxQI8lrsFy64+K2/lbFOZK0K68gU=\ntrusted comment: timestamp:1795343125\tfile:skicut-0.1.9-setup.zip\thashed\nDK7e1DcZp28dlI4g8AUfSB3X76YBtVtYAiXJ/hYjAXdNsBlDWpram2sYsPnMTkafDsJOtPHpfd57Tv1EcWjSCQ==\n"
     }
   }
 }
