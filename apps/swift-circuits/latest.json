@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "Development build 0.1.8 for staging: debug-signed Android APK for sideloading, not a store build.\n\n- Backend: https://staging-swiftcircuits.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/swift-circuits/development.json\n\nChanges since the previous development build:\n\n- chore(release): swift-circuits 0.1.8 (ff8ab7c)\n- g3-ui fda2c51 fix(css): stop pinch from zooming the whole app (touch-action: pan-x pan-y on the page root and app shell)\n\nThe build-info JSON attached to this release records the compiled profile.",
-  "pub_date": "2026-11-22T10:03:11Z",
+  "version": "0.1.9",
+  "notes": "Debug-signed development build for sideloading (not a store build), built with the profiled staging launcher.\n\n- Backend: https://staging-swiftcircuits.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/swift-circuits/development.json\n\nChanges since 0.1.8 (ff8ab7c):\n- 918435a feat: migrate to SurrealDB 4\n- 7f68219 chore(release): swift-circuits 0.1.9\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
+  "pub_date": "2026-11-26T13:51:51Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.8/swift-circuits-0.1.8.apk",
-      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbym+UkpcOHnOqbiZHL4Aaxwly57S/P43nZhL4MwNwH/to+OYg8VP1mPgYRO8a7H2AIjcifjIsmcHZROGrARCsu2A4=\ntrusted comment: timestamp:1795341791\tfile:swift-circuits-0.1.8.apk\thashed\nm+da/lChTm9AHICn2KUwD7a7bFfWbZrUxMpcAjNRI0bAsaQE+/YqL7a87sLKrbk9RJGb4BpIq9WE0+qd7OQXAA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.9/swift-circuits-0.1.9.apk",
+      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbymwOFhkUgjlrtL/Kc8jt7MlubuH6/MwWc8CaslhsMLsBvVCUx3SDUN/KPvT5/PdSjpV/0iysh5VmVPwBKYT+pZQM=\ntrusted comment: timestamp:1795701111\tfile:swift-circuits-0.1.9.apk\thashed\nY/NCf4g0v8OQwK7RaxlKbpK8Ay2t8h4CqxZ9ZK9ZEqLKl9dWZJweKOL0X+8wM9ypFcpQtfLLQbkW7WRQNlvCAA==\n"
     }
   }
 }
