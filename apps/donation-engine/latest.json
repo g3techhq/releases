@@ -1,11 +1,11 @@
 {
-  "version": "0.1.6",
-  "notes": "Development build 0.1.6 for staging: debug-signed Android APK for sideloading, not a store build.\n\n- Backend: https://staging-donationengine.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/donation-engine/development.json\n\nChanges since the previous development build:\n\n- chore(release): donation-engine 0.1.6 (a80666e)\n- g3-ui fda2c51 fix(css): stop pinch from zooming the whole app (touch-action: pan-x pan-y on the page root and app shell)\n\nThe build-info JSON attached to this release records the compiled profile.",
-  "pub_date": "2026-11-22T10:12:16Z",
+  "version": "0.1.7",
+  "notes": "Debug-signed development build for sideloading (not a store build), built with the profiled staging launcher.\n\n- Backend: https://staging-donationengine.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/donation-engine/development.json\n\nChanges since 0.1.6 (a80666e):\n- 6e899ce feat: migrate to SurrealDB 4\n- da93a1a chore(release): donation-engine 0.1.7\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
+  "pub_date": "2026-11-26T14:37:44Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.6/donation-engine-0.1.6.apk",
-      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2kfBMZI73p7ddDhbzXxG6gAHDP1DoreR7OnbnBszmpVsiNVz9vdCquW2e0WGpGLMuU3Z5tt6pdj1HSH1yP5GbAs=\ntrusted comment: timestamp:1795342336\tfile:donation-engine-0.1.6.apk\thashed\nbuuKnEsfsQH+kF/1raqNl+6ef+OslioMSr6CogSM1fE7Uo2JCXhAVjcUIAblKhmIjMTUeCHHtT45qUYyhcw9Bw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/donation-engine-v0.1.7/donation-engine-0.1.7.apk",
+      "signature": "untrusted comment: signature from release key DA43BA4F8711AD69\nRURprRGHT7pD2uTjEVDORjF0nRB860NLzju6FQH60IPdWjBjYaE1W2CjtHSoYUntQrHQCxHjz2gEpvKzdyc4xkFxspdX690uaQo=\ntrusted comment: timestamp:1795703864\tfile:donation-engine-0.1.7.apk\thashed\nBjvh8myoE9Xlkznu45wOQSV3MVOH2zztKftPgKwE6wIW1h0+dZLFwRBrkehgsQq7vdE32fnGUpdrieo9Z5VOBw==\n"
     }
   }
 }
