@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "Development build 0.1.8 for staging: debug-signed Windows installer for sideloading, not a store build.\n\n- Backend: none (no app server)\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/tally/development.json\n\nChanges since the previous development build:\n\n- chore(release): tally 0.1.8 (cbf8357)\n- g3-ui fda2c51 fix(css): stop pinch from zooming the whole app (touch-action: pan-x pan-y on the page root and app shell)\n\nThe build-info JSON attached to this release records the compiled profile.",
-  "pub_date": "2026-11-22T10:30:12Z",
+  "version": "0.1.9",
+  "notes": "Debug development build for direct Windows install (not a store build), built with the profiled staging launcher.\n\n- Backend: none (local-first app)\n- Catalog: https://staging-catalog.g3tech.net\n- Payments / licenses: https://staging-pay.g3tech.net\n- Update feed: apps/tally/development.json\n\nChanges since 0.1.8 (cbf8357):\n- 088ed36 chore: ignore local installer builds\n- d75519c fix: open legacy SurrealDB books on v4 (the vault keeps the pre-upgrade encrypted books before the working copy is converted)\n- 7caf966 chore(release): tally 0.1.9\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
+  "pub_date": "2026-11-26T14:43:49Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.8/tally-0.1.8-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8I1IuM6KmnaN5347vYjlEt7zDdmj0/2m5Q09cSgvYTLDrdMyvlbtvfgXpe2IMGYq035p17n8HZlbna652+k9VsQ0=\ntrusted comment: timestamp:1795343412\tfile:tally-0.1.8-setup.zip\thashed\noimlii3rf07Zf07+42IsMkyYM9qF7RtnpLjX6dVCfOMLKbl3iRMsK5lNHX31ezDiUYRYIXPtPrOezz1Xsr4PDw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.9/tally-0.1.9-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8IyM2mxSbJVIrVlK3knLjrIH7I1+7Sy+8fPsMhL4dU/ZOft+TvOdTxyz487kE3mpKM9sgq9f1L22o5msvBYfZqwE=\ntrusted comment: timestamp:1795704229\tfile:tally-0.1.9-setup.zip\thashed\nYU32z3HIH2/YLxfcdBRXTjKmYar6dZKwrp88/ZHjoaC78EpUitjBmtG82md8Y3Lny0pFboSmZqn5pliDi+DoCw==\n"
     }
   }
 }
