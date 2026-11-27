@@ -1,11 +1,11 @@
 {
-  "version": "0.1.9",
-  "notes": "Debug-signed development build for sideloading (not a store build), built with the profiled staging launcher.\n\n- Backend: https://staging-swiftcircuits.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/swift-circuits/development.json\n\nChanges since 0.1.8 (ff8ab7c):\n- 918435a feat: migrate to SurrealDB 4\n- 7f68219 chore(release): swift-circuits 0.1.9\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
-  "pub_date": "2026-11-26T13:51:51Z",
+  "version": "0.1.10",
+  "notes": "Debug-signed development build for sideloading (staging). Not a store build.\n\n- Backend: https://staging-swiftcircuits.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/swift-circuits/development.json\n\nChanges since the previous development release:\n- chore(release): swift-circuits 0.1.10 (b4f5c41)\n- fix(build): bump solver to 0.1.9 in Cargo.lock (ea88e4a)\n- g3-ui: fix(layers): a sheet opened over a toast covers it (f641ef7)\n- g3-ui: test(layers): toasts follow presentation order like every other surface (7f5f58c)\n\nThe attached build-info JSON records the compiled profile.",
+  "pub_date": "2026-11-27T10:41:21Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.9/swift-circuits-0.1.9.apk",
-      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbymwOFhkUgjlrtL/Kc8jt7MlubuH6/MwWc8CaslhsMLsBvVCUx3SDUN/KPvT5/PdSjpV/0iysh5VmVPwBKYT+pZQM=\ntrusted comment: timestamp:1795701111\tfile:swift-circuits-0.1.9.apk\thashed\nY/NCf4g0v8OQwK7RaxlKbpK8Ay2t8h4CqxZ9ZK9ZEqLKl9dWZJweKOL0X+8wM9ypFcpQtfLLQbkW7WRQNlvCAA==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/swift-circuits-v0.1.10/swift-circuits-0.1.10.apk",
+      "signature": "untrusted comment: signature from release key 9BF2C63E1BAF011E\nRUQeAa8bPsbym3xWMa8Q0XmKWpURI3ihH5wCvqN3iWEkKBSop9uK8ukcpcnVQ5QPvBy8QCC/n0gB+3fJj1YijKlO42QikfEGTQI=\ntrusted comment: timestamp:1795776081\tfile:swift-circuits-0.1.10.apk\thashed\nnAO7ykwXAHg00k6q3sZLbUiGIZLUd7Csjl/UcUvyqs5KNxoMYtl9adJLUC7UykkkkD7JooJ/sGbawiquf+zRDw==\n"
     }
   }
 }
