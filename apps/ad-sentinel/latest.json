@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
+  "version": "0.1.9",
   "notes": "Debug-signed dev build for sideloading, with the in-app updater; not for Play.\nNo backend: the app reads only the staging catalog (https://staging-catalog.g3tech.net).\nAlso attached: the Google TV overlay app (sideload it; it does not update itself).",
-  "pub_date": "2026-11-22T10:16:28Z",
+  "pub_date": "2026-11-27T10:54:29Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.8/ad-sentinel-0.1.8.apk",
-      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zRbhWD+PQT0mgYeUo6i7yQOVqT4Q5K/BiDIlVczQzPTezeo66v87b4V9q4kuEJCuHcWDZfjVk+uMfQTog9wgoA0=\ntrusted comment: timestamp:1795342588\tfile:ad-sentinel-0.1.8.apk\thashed\nif4iKPa42Ql+peYldG+PFT5mjBuTrm/ELzpCGvhIAlkV5NLsdMahGn+5es8KgbMRhT+tv9QLgEkLW2I21vgxBQ==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/ad-sentinel-v0.1.9/ad-sentinel-0.1.9.apk",
+      "signature": "untrusted comment: signature from release key CD3E52D6653E5016\nRUQWUD5l1lI+zXLS8c7UgI227JtrO+bEuMnEhUYo/NpD1Bt/hnZ0fIn2S9eASLyJHgRo1QrCdJL2/sOxwxvbEWGJXaY0vg1cDgo=\ntrusted comment: timestamp:1795776869\tfile:ad-sentinel-0.1.9.apk\thashed\nIYepkw0kajzeen/uZrR2TWbk/UQwIPoN9ElOW0dWEjseZa+wDTmobw4k9ou4i59mKQrgvFU1ic+XSy+zWwYgAw==\n"
     }
   }
 }
