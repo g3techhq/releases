@@ -1,11 +1,11 @@
 {
-  "version": "0.1.7",
-  "notes": "Debug-signed development build for sideloading (not a store build), built with the profiled staging launcher.\n\n- Backend: https://staging-mediamancer.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/media-mancer/development.json\n\nChanges since 0.1.6 (4ea5182):\n- aaf7ff6 feat: migrate to SurrealDB 4\n- 3b2cbba docs: add the first store submission runbook\n- 0be21cc chore(release): media-mancer 0.1.7\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
-  "pub_date": "2026-11-26T14:15:50Z",
+  "version": "0.1.8",
+  "notes": "Debug-signed development build for sideloading (staging). Not a store build.\n\n- Backend: https://staging-mediamancer.g3tech.net\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/media-mancer/development.json\n\nChanges since the previous development release:\n- chore(release): media-mancer 0.1.8 (1908960)\n- g3-ui: fix(layers): a sheet opened over a toast covers it (f641ef7)\n- g3-ui: test(layers): toasts follow presentation order like every other surface (7f5f58c)\n\nThe attached build-info JSON records the compiled profile.",
+  "pub_date": "2026-11-27T09:47:28Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.7/media-mancer-0.1.7.apk",
-      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSPqLMWyA6UgYpLo9zB899KtcXO8NR7rmlZ/TvQGyouDyUC/R+mXWOpW1Y/L4H40YpBBjJLI/YhhL3bGbKDM0bQI=\ntrusted comment: timestamp:1795702550\tfile:media-mancer-0.1.7.apk\thashed\ndQfhAy61RNV4qgVD0cRNSsbhuinxvIABKhHm8tGHc6+8/QuOQpyzLsSLFB39jta5riBSLpry/TIX5ObwJO3CCw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/media-mancer-v0.1.8/media-mancer-0.1.8.apk",
+      "signature": "untrusted comment: signature from release key 48DFDA3BB8B0A4EE\nRUTupLC4O9rfSBDrOnq6BKBx/bFrwnhmmpzlN58Yy8xff20kKUHl+fgg4HMPp77BzLuFa6i74ZUOKLVerOCvwGWtZ9BeuCUNlg4=\ntrusted comment: timestamp:1795772848\tfile:media-mancer-0.1.8.apk\thashed\ntbVtEilMnIQnEBKjRNajEIV4X4BROGt04BBLIUWtHjxzwu/4i1XH5GbgHPdt4+zGJltBRssAhMrBkQT1QbNIDQ==\n"
     }
   }
 }
