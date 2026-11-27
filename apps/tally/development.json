@@ -1,11 +1,11 @@
 {
-  "version": "0.1.9",
-  "notes": "Debug development build for direct Windows install (not a store build), built with the profiled staging launcher.\n\n- Backend: none (local-first app)\n- Catalog: https://staging-catalog.g3tech.net\n- Payments / licenses: https://staging-pay.g3tech.net\n- Update feed: apps/tally/development.json\n\nChanges since 0.1.8 (cbf8357):\n- 088ed36 chore: ignore local installer builds\n- d75519c fix: open legacy SurrealDB books on v4 (the vault keeps the pre-upgrade encrypted books before the working copy is converted)\n- 7caf966 chore(release): tally 0.1.9\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
-  "pub_date": "2026-11-26T14:43:49Z",
+  "version": "0.1.10",
+  "notes": "Debug-signed development build for sideloading (staging). Not a store build.\n\n- Backend: none\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/tally/development.json\n\nChanges since the previous development release:\n- chore(release): tally 0.1.10 (0321f0e)\n- g3-ui: fix(layers): a sheet opened over a toast covers it (f641ef7)\n- g3-ui: test(layers): toasts follow presentation order like every other surface (7f5f58c)\n\nThe attached build-info JSON records the compiled profile.",
+  "pub_date": "2026-11-27T10:03:51Z",
   "platforms": {
     "windows-x86_64-nsis": {
-      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.9/tally-0.1.9-setup.zip",
-      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8IyM2mxSbJVIrVlK3knLjrIH7I1+7Sy+8fPsMhL4dU/ZOft+TvOdTxyz487kE3mpKM9sgq9f1L22o5msvBYfZqwE=\ntrusted comment: timestamp:1795704229\tfile:tally-0.1.9-setup.zip\thashed\nYU32z3HIH2/YLxfcdBRXTjKmYar6dZKwrp88/ZHjoaC78EpUitjBmtG82md8Y3Lny0pFboSmZqn5pliDi+DoCw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/tally-v0.1.10/tally-0.1.10-setup.zip",
+      "signature": "untrusted comment: signature from release key 233CC31AD6624813\nRUQTSGLWGsM8IycqEkxBz0aauB4jndJCkx1XDbl1x2xUaWbtKg5FsTSX0+vJ+RKzWePFUk36dWAdvOMso8XzdPtKt6REdNViGQk=\ntrusted comment: timestamp:1795773831\tfile:tally-0.1.10-setup.zip\thashed\nK4Vjo0VD4ygYaCwJJ9TJx+WKCCx/txGh3fmva/yYkYzfNzFbgLtYtaEV5EeJMEheonZH2yiGFJ9Wa1teEaENBQ==\n"
     }
   }
 }
