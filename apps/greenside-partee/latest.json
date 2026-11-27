@@ -1,11 +1,11 @@
 {
-  "version": "0.1.8",
-  "notes": "Debug-signed development build for sideloading (not a store build), built with the profiled staging launcher.\n\n- Backend: https://staging.greensidepartee.com\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/greenside-partee/development.json\n\nChanges since 0.1.7 (037a86f):\n- 384b1af feat: migrate to SurrealDB 4\n- 03bedc0 chore(release): greenside-partee 0.1.8\n\nThe attached build-info JSON and About > Build information record the compiled settings.",
-  "pub_date": "2026-11-26T12:43:07Z",
+  "version": "0.1.9",
+  "notes": "Debug-signed development build for sideloading (staging). Not a store build.\n\n- Backend: https://staging.greensidepartee.com\n- Catalog: https://staging-catalog.g3tech.net\n- Payments: https://staging-pay.g3tech.net\n- Update feed: apps/greenside-partee/development.json\n\nChanges since the previous development release:\n- chore(release): greenside-partee 0.1.9 (5c20c87)\n- g3-ui: fix(layers): a sheet opened over a toast covers it (f641ef7)\n- g3-ui: test(layers): toasts follow presentation order like every other surface (7f5f58c)\n\nThe attached build-info JSON records the compiled profile.",
+  "pub_date": "2026-11-27T09:33:27Z",
   "platforms": {
     "android": {
-      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.8/greenside-partee-0.1.8.apk",
-      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DoslG529Np9yrZYKzYD8/UTdCy+daNSDOjQJJxx5ZNSb2pEwZ9Hj1T+puhjicfd/2iLISyJOc4nUlbDDS7yliAU=\ntrusted comment: timestamp:1795696987\tfile:greenside-partee-0.1.8.apk\thashed\naaf4rX5f+cObSZ7rs8Wml8nWs67t0hl1UU89Z2uzXA4Jq0plb/oyHqL8PSjthIaCEOaXLkGJMSHz/mQA/mUeDw==\n"
+      "url": "https://github.com/g3techhq/releases/releases/download/greenside-partee-v0.1.9/greenside-partee-0.1.9.apk",
+      "signature": "untrusted comment: signature from release key 0EF8469AC1C64D4E\nRUROTcbBmkb4DpTbEpjY+QJXRjFI/XYIGaRWt1PN+qEj67PpRUO6uhSr87hnIVgAThA7h68T8sIFZCfZ2ojnK5J9yi+KaCK3XQE=\ntrusted comment: timestamp:1795772007\tfile:greenside-partee-0.1.9.apk\thashed\n7tWud69zK56GGLNx9BUCfS2HN3CGv/DjOi5BJ93H53oHSNFg17btn2AEK3kJJ4EQvB+E/6gnSWJiTfEGv3B6Bg==\n"
     }
   }
 }
